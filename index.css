@@ -1,0 +1,77 @@
+.theme-toggle {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #222;
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    position: absolute;
+    font-size: 25px;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.3s ease;
+}
+
+/* Lua aparecendo */
+.lua {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* Sol escondido */
+.sol {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+}
+
+
+/* MODO CLARO */
+
+.theme-toggle.claro {
+    background: #eee;
+}
+
+.theme-toggle.claro .lua {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+.theme-toggle.claro .sol {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+.cabecalho {
+    display: flex;
+    height: 30;
+    align-items: center;
+
+    h1{
+        margin-right: 400px;
+    }
+
+    .menu {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    margin-right: 300px;
+}
+
+    .login{
+        width: 16px;
+        height: 8px;
+    }
+
+}
