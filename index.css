@@ -1,3 +1,139 @@
+/* =========================
+   CORES DOS TEMAS
+========================= */
+
+:root {
+    --h1: #fff;
+    --fundo: #000021;
+    --cabecalho: #15151F;
+    --texto: #ffffff;
+    --botao: #222222;
+    --botao-texto: #ffffff;
+    --menu: #ffffff;
+}
+
+/* MODO CLARO */
+
+body.claro {
+    --h1: #1313DA;
+    --fundo: #F5F5F5;
+    --cabecalho: #BCB7D5;
+    --texto: #222222;
+    --botao: #EEEEEE;
+    --botao-texto: #222222;
+    --menu: #222222;
+}
+
+
+/* =========================
+   PÁGINA
+========================= */
+
+body {
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--texto);
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+    display: flex;
+    height: 115px;
+    align-items: center;
+    background-color: var(--cabecalho);
+    transition: background-color 0.3s ease;
+
+
+    h1 {
+        margin-left: 40px;
+        margin-right: 400px;
+
+        color: var(--h1);
+
+        transition: color 0.3s ease;
+    }
+
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu {
+        display: flex;
+
+        align-items: center;
+
+        gap: 60px;
+
+        list-style: none;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 400;
+
+        margin: 0;
+        padding: 0;
+
+        color: var(--menu);
+
+        transition: color 0.3s ease;
+        margin-right: 350px;
+
+        li {
+            cursor: pointer;
+
+            transition: color 0.3s ease;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+
+    /* =========================
+       BOTÃO DO TEMA
+    ========================= */
+
+    .theme-toggle {
+        margin-left: 30px;
+    }
+
+
+    /* =========================
+       BOTÃO LOGIN
+    ========================= */
+
+    .Login {
+        margin-left: 30px;
+        width: 70px;
+        height: 35px;
+
+        color: rgb(13, 64, 218);
+        background-color: rgb(225, 231, 252);
+
+        border: 1px solid var(--texto);
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+    }
+}
+
+
+/* =========================
+   BOTÃO LUA / SOL
+========================= */
+
 .theme-toggle {
     width: 50px;
     height: 50px;
@@ -5,73 +141,79 @@
     border: none;
     border-radius: 50%;
 
-    background: #222;
+    background-color: var(--cabecalho);
+
     cursor: pointer;
 
     position: relative;
+
     overflow: hidden;
 
     display: flex;
     align-items: center;
     justify-content: center;
-}
 
-.icon {
-    position: absolute;
-    font-size: 25px;
-
-    transition:
-        transform 0.5s ease,
-        opacity 0.3s ease;
-}
-
-/* Lua aparecendo */
-.lua {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-}
-
-/* Sol escondido */
-.sol {
-    opacity: 0;
-    transform: rotate(180deg) scale(0);
-}
+    transition: background-color 0.3s ease;
 
 
-/* MODO CLARO */
+    .icon {
+        position: absolute;
 
-.theme-toggle.claro {
-    background: #eee;
-}
+        font-size: 25px;
 
-.theme-toggle.claro .lua {
-    opacity: 0;
-    transform: rotate(-180deg) scale(0);
-}
-
-.theme-toggle.claro .sol {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-}
-.cabecalho {
-    display: flex;
-    height: 30;
-    align-items: center;
-
-    h1{
-        margin-right: 400px;
+        transition:
+            transform 0.5s ease,
+            opacity 0.3s ease;
     }
 
-    .menu {
-    display: flex;
-    justify-content: center;
-    padding-top: 5px;
-    margin-right: 300px;
-}
 
-    .login{
-        width: 16px;
-        height: 8px;
+    /* LUA */
+
+    .lua {
+        opacity: 1;
+
+        transform:
+            rotate(0deg)
+            scale(1);
     }
 
+
+    /* SOL */
+
+    .sol {
+        opacity: 0;
+
+        transform:
+            rotate(180deg)
+            scale(0);
+    }
+}
+
+
+/* =========================
+   QUANDO ESTIVER NO
+   MODO CLARO
+========================= */
+
+body.claro {
+
+    .theme-toggle {
+
+        .lua {
+            opacity: 0;
+
+            transform:
+                rotate(-180deg)
+                scale(0);
+        }
+
+
+        .sol {
+            opacity: 1;
+
+            transform:
+                rotate(0deg)
+                scale(1);
+        }
+    }
 }
