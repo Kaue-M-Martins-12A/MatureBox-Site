@@ -1,0 +1,280 @@
+/* =========================
+   CORES DOS TEMAS
+========================= */
+
+:root {
+    --h1: #fff;
+    --fundo: #000021;
+    --cabecalho: #15151F;
+    --texto: #ffffff;
+    --botao: #222222;
+    --botao-texto: #ffffff;
+    --menu: #ffffff;
+    --lilas: #3333E2;
+}
+
+/* MODO CLARO */
+
+body.claro {
+    --h1: #1313DA;
+    --fundo: #F5F5F5;
+    --cabecalho: #BCB7D5;
+    --texto: #222222;
+    --botao: #EEEEEE;
+    --botao-texto: #222222;
+    --menu: #222222;
+}
+
+
+/* =========================
+   PÁGINA
+========================= */
+
+body {
+    margin: 0;
+    background-color: var(--fundo);
+    color: var(--texto);
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+section{
+    margin: 90px 60px;
+    color: var(--texto);
+    display: flex;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+
+    .pl{
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        background-color: #040450;
+        width: 852px;
+        height: 610px;
+        border-radius: 9px;
+
+        h1{
+            font-size: 50px;
+            span{
+                color: var(--lilas);
+            }
+        }
+
+        p{
+            text-align: left;
+            width: 702px;
+            height: 107;
+            font-size: 19px;
+            letter-spacing: 1.5px;
+            word-spacing: 5px;
+            width: 702px;
+            font-size: 18px;
+        }
+
+        div{
+            display: flex;
+            gap: 70px;
+
+            .botaomontar {
+                background-color: var(--lilas);
+                border-radius: 5px;
+                font-size: 16px;
+                width: 251px;
+                height: 62px;
+                color: var(--botao-texto);
+                
+            }
+            
+        }
+    
+    }
+
+
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+.cabecalho {
+    display: flex;
+    height: 115px;
+    align-items: center;
+    background-color: var(--cabecalho);
+    transition: background-color 0.3s ease;
+
+
+    h1 {
+        margin-left: 60px;
+        margin-right: 320px;
+        font-size: 40px;
+
+        color: var(--h1);
+
+        transition: color 0.3s ease;
+    }
+
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu {
+        display: flex;
+
+        align-items: center;
+
+        gap: 60px;
+
+        list-style: none;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 400;
+
+        margin: 0;
+        padding: 0;
+
+        color: var(--menu);
+
+        transition: color 0.3s ease;
+        margin-right: 350px;
+
+        li {
+            cursor: pointer;
+
+            transition: color 0.3s ease;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+
+    /* =========================
+       BOTÃO DO TEMA
+    ========================= */
+
+    .theme-toggle {
+        margin-left: 30px;
+    }
+
+
+    /* =========================
+       BOTÃO LOGIN
+    ========================= */
+
+    .Login {
+        margin-left: 30px;
+        width: 70px;
+        height: 35px;
+
+        color: rgb(13, 64, 218);
+        background-color: rgb(225, 231, 252);
+
+        border: 1px solid var(--texto);
+        border-radius: 5px;
+
+        cursor: pointer;
+
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+    }
+    
+}
+
+
+/* =========================
+   BOTÃO LUA / SOL
+========================= */
+
+.theme-toggle {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--cabecalho);
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.3s ease;
+
+
+    .icon {
+        position: absolute;
+
+        font-size: 25px;
+
+        transition:
+            transform 0.5s ease,
+            opacity 0.3s ease;
+    }
+
+
+    /* LUA */
+
+    .lua {
+        opacity: 1;
+
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+
+    /* SOL */
+
+    .sol {
+        opacity: 0;
+
+        transform:
+            rotate(180deg)
+            scale(0);
+    }
+}
+
+
+/* =========================
+   QUANDO ESTIVER NO
+   MODO CLARO
+========================= */
+
+body.claro {
+
+    .theme-toggle {
+
+        .lua {
+            opacity: 0;
+
+            transform:
+                rotate(-180deg)
+                scale(0);
+        }
+
+
+        .sol {
+            opacity: 1;
+
+            transform:
+                rotate(0deg)
+                scale(1);
+        }
+    }
+}
