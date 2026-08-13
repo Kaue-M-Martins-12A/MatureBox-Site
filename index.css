@@ -66,12 +66,17 @@ section{
         }
 
         p{
+<<<<<<< HEAD
             text-align: left;
             width: 702px;
             height: 107;
             font-size: 19px;
             letter-spacing: 1.5px;
             word-spacing: 5px;
+=======
+            width: 702px;
+            font-size: 18px;
+>>>>>>> d974d88ba12013537fcdddea63cdbce181924011
         }
     
     }
