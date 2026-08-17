@@ -63,6 +63,8 @@ section{
             font-size: 50px;
             span{
                 color: var(--lilas);
+                color: #3333E2;
+
             }
         }
 
@@ -90,12 +92,16 @@ section{
                 color: var(--botao-texto);
                 
             }
-            
+            width: 702px;
+            font-size: 18px;
         }
     
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 144dac28a4f7d1cfcf5349cd21d1bb57878086f2
 }
 
 
