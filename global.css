@@ -15,12 +15,12 @@
 
 /* MODO CLARO */
 body.claro {
-    --fundo: #F5F5F5;
+    --fundo: #FFFFFF;
     --cabecalho: #BCB7D5;
-    --card-fundo: #ffffff;
+    --card-fundo: #BCB7D5;
     --texto: #444444;
-    --texto-claro: #111111;
-    --lilas: #5a31f4;
+    --texto-claro: #222222;
+    --lilas: #3333E2;
     --borda-card: #ddddee;
 }
 
