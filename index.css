@@ -1,286 +1,281 @@
-/* =========================
-   CORES DOS TEMAS
-========================= */
-
-:root {
-    --h1: #fff;
-    --fundo: #000021;
-    --cabecalho: #15151F;
-    --texto: #ffffff;
-    --botao: #222222;
-    --botao-texto: #ffffff;
-    --menu: #ffffff;
-    --lilas: #3333E2;
-}
-
-/* MODO CLARO */
-
-body.claro {
-    --h1: #1313DA;
-    --fundo: #F5F5F5;
-    --cabecalho: #BCB7D5;
-    --texto: #222222;
-    --botao: #EEEEEE;
-    --botao-texto: #222222;
-    --menu: #222222;
-}
-
+@import url('global.css');
 
 /* =========================
-   PÁGINA
+   ESTILOS ESPECÍFICOS DA PÁGINA
 ========================= */
 
-body {
-    margin: 0;
-    background-color: var(--fundo);
-    color: var(--texto);
-
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
-}
-
-section{
-    margin: 90px 60px;
-    color: var(--texto);
+.hero-section {
     display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
+    .pl {
+        position: relative;
+        flex: 2;
+        padding: 40px;
+        background-color: var(--card-fundo);
+        border-radius: 12px;
+        border: 1px solid var(--borda-card);
 
-    .pl{
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        background-color: #040450;
-        width: 852px;
-        height: 610px;
-        border-radius: 9px;
+        .indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(90, 49, 244, 0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--lilas);
+            margin-bottom: 25px;
 
-        h1{
-            font-size: 50px;
-            span{
-                color: var(--lilas);
-                color: #3333E2;
-
+            .dot {
+                width: 6px;
+                height: 6px;
+                background-color: var(--lilas);
+                border-radius: 50%;
             }
         }
 
-        p{
-            text-align: left;
-            width: 702px;
-            height: 107;
-            font-size: 19px;
-            letter-spacing: 1.5px;
-            word-spacing: 5px;
-            width: 702px;
-            font-size: 18px;
+        h1 {
+            font-size: 36px;
+            margin: 0 0 20px 0;
+            color: var(--texto-claro);
+
+            span {
+                color: var(--lilas);
+            }
         }
 
-        div{
+        p {
+            max-width: 440px;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .botoes-hero {
             display: flex;
-            gap: 70px;
+            gap: 15px;
 
             .botaomontar {
                 background-color: var(--lilas);
-                border-radius: 5px;
-                font-size: 16px;
-                width: 251px;
-                height: 62px;
-                color: var(--botao-texto);
-                
+                border: none;
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 20px;
+                color: #ffffff;
+                cursor: pointer;
             }
-            width: 702px;
-            font-size: 18px;
+
+            .botaofonte {
+                background-color: transparent;
+                border: 1px solid var(--lilas);
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 20px;
+                color: var(--lilas);
+                cursor: pointer;
+            }
         }
-    
+
+        .imagem-chef {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            height: 200px;
+        }
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 144dac28a4f7d1cfcf5349cd21d1bb57878086f2
-}
-
-
-/* =========================
-   CABEÇALHO
-========================= */
-
-.cabecalho {
-    display: flex;
-    height: 115px;
-    align-items: center;
-    background-color: var(--cabecalho);
-    transition: background-color 0.3s ease;
-
-
-    h1 {
-        margin-left: 60px;
-        margin-right: 320px;
-        font-size: 40px;
-
-        color: var(--h1);
-
-        transition: color 0.3s ease;
-    }
-
-
-    /* =========================
-       MENU
-    ========================= */
-
-    .menu {
+    .telemetria {
+        flex: 1;
+        padding: 30px;
+        background-color: var(--card-fundo);
+        border-radius: 12px;
+        border: 1px solid var(--borda-card);
         display: flex;
+        flex-direction: column;
+        gap: 20px;
 
-        align-items: center;
+        h3 {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
 
-        gap: 60px;
+        .card-telemetria {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-        list-style: none;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-weight: 400;
+            .info {
+                display: flex;
+                flex-direction: column;
 
-        margin: 0;
-        padding: 0;
+                .label {
+                    font-size: 10px;
+                    letter-spacing: 1px;
+                    margin-bottom: 5px;
+                }
 
-        color: var(--menu);
+                .valor {
+                    font-size: 28px;
+                    font-weight: bold;
+                    color: var(--texto-claro);
 
-        transition: color 0.3s ease;
-        margin-right: 350px;
+                    span {
+                        font-size: 16px;
+                        color: var(--lilas);
+                    }
+                }
+            }
 
-        li {
-            cursor: pointer;
-
-            transition: color 0.3s ease;
-
-            &:hover {
-                opacity: 0.7;
+            .icone-circulo {
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                background: rgba(90, 49, 244, 0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }
-
-
-    /* =========================
-       BOTÃO DO TEMA
-    ========================= */
-
-    .theme-toggle {
-        margin-left: 30px;
-    }
-
-
-    /* =========================
-       BOTÃO LOGIN
-    ========================= */
-
-    .Login {
-        margin-left: 30px;
-        width: 70px;
-        height: 35px;
-
-        color: rgb(13, 64, 218);
-        background-color: rgb(225, 231, 252);
-
-        border: 1px solid var(--texto);
-        border-radius: 5px;
-
-        cursor: pointer;
-
-        transition:
-            background-color 0.3s ease,
-            color 0.3s ease;
-    }
-    
 }
 
+.secao-recursos {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
 
-/* =========================
-   BOTÃO LUA / SOL
-========================= */
+    h2 {
+        font-size: 28px;
+        color: var(--texto-claro);
+        margin-bottom: 10px;
+    }
 
-.theme-toggle {
-    width: 50px;
-    height: 50px;
+    .subtitulo {
+        max-width: 580px;
+        margin: 0 auto 40px;
+        font-size: 13px;
+        line-height: 1.5;
+    }
 
+    .grid-recursos {
+        display: flex;
+        gap: 20px;
+
+        .card-recurso {
+            flex: 1;
+            background-color: var(--card-fundo);
+            border: 1px solid var(--borda-card);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: left;
+
+            .icon-box {
+                width: 36px;
+                height: 36px;
+                background: rgba(90, 49, 244, 0.2);
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+
+            h4 {
+                font-size: 15px;
+                color: var(--texto-claro);
+                margin: 0 0 10px 0;
+            }
+
+            p {
+                font-size: 12px;
+                line-height: 1.5;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.divisor {
+    max-width: 1200px;
+    margin: 50px auto;
     border: none;
-    border-radius: 50%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-    background-color: var(--cabecalho);
-
-    cursor: pointer;
-
-    position: relative;
-
-    overflow: hidden;
-
+.secao-arquitetura {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 50px;
 
-    transition: background-color 0.3s ease;
+    .imagem-equipamento {
+        flex: 1;
+        text-align: center;
 
-
-    .icon {
-        position: absolute;
-
-        font-size: 25px;
-
-        transition:
-            transform 0.5s ease,
-            opacity 0.3s ease;
+        img {
+            max-width: 100%;
+            max-height: 350px;
+        }
     }
 
+    .detalhes-arquitetura {
+        flex: 1;
 
-    /* LUA */
-
-    .lua {
-        opacity: 1;
-
-        transform:
-            rotate(0deg)
-            scale(1);
-    }
-
-
-    /* SOL */
-
-    .sol {
-        opacity: 0;
-
-        transform:
-            rotate(180deg)
-            scale(0);
-    }
-}
-
-
-/* =========================
-   QUANDO ESTIVER NO
-   MODO CLARO
-========================= */
-
-body.claro {
-
-    .theme-toggle {
-
-        .lua {
-            opacity: 0;
-
-            transform:
-                rotate(-180deg)
-                scale(0);
+        h2 {
+            font-size: 28px;
+            color: var(--texto-claro);
+            margin: 0 0 15px 0;
         }
 
+        p {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
 
-        .sol {
-            opacity: 1;
+        .lista-componentes {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
 
-            transform:
-                rotate(0deg)
-                scale(1);
+            li {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 13px;
+                color: var(--texto-claro);
+                margin-bottom: 10px;
+
+                .check {
+                    color: var(--lilas);
+                }
+            }
+        }
+
+        .botaofonte {
+            background-color: transparent;
+            border: 1px solid var(--lilas);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 20px;
+            color: var(--lilas);
+            cursor: pointer;
         }
     }
 }
