@@ -3,12 +3,12 @@
 ========================= */
 
 :root {
-    --fundo: #050515;
-    --cabecalho: #08081c;
-    --card-fundo: #0b0b2b;
+    --fundo: #000021;
+    --cabecalho: #15151F;
+    --card-fundo: #040450;
     --texto: #8888aa;
     --texto-claro: #ffffff;
-    --lilas: #5a31f4;
+    --lilas: #3333E2;
     --lilas-hover: #4824d6;
     --borda-card: #18183d;
 }
