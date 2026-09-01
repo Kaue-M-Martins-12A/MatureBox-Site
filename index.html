@@ -1,70 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="index.css">
     <title>MatureBox</title>
 </head>
-
 <body>
 
+    <!-- CABEÇALHO -->
     <header class="cabecalho">
-
-        <h1>MatureBox</h1>
+        <h1 class="logo">MatureBox</h1>
 
         <ul class="menu">
-            <li>Home</li>
-            <li>Instruções</li>
-            <li>Produção</li>
-            <li>Sobre Nós</li>
-            <li>Referências</li>
-            <li>Jogo</li>
+            <li class="ativo">HOME</li>
+            <li>INSTRUÇÕES</li>
+            <li>PRODUÇÃO</li>
+            <li>SOBRE NÓS</li>
+            <li>REFERÊNCIAS</li>
+            <li>JOGO</li>
         </ul>
 
-        <button id="theme-toggle" class="theme-toggle">
-            <span class="icon lua">🌙</span>
-            <span class="icon sol">☀️</span>
-        </button>
-
-        <button class="Login">Login</button>
-
+        <div class="acoes-cabecalho">
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="icon lua">🌙</span>
+                <span class="icon sol">☀️</span>
+            </button>
+            <button class="Login">GET STARTED</button>
+        </div>
     </header>
-    <section>
+
+    <!-- SEÇÃO HERO & TELEMETRIA -->
+    <section class="hero-section">
         <div class="pl">
-
-            <h3 class="indicator"> SISTEMA IoT ATIVO </h3>
-            <br>
-            <h1> Precisão Laboratorial,
-            <h1> Precisão Laboratorial
-            <h1> Precisão Laboratorial,
-                <br>
-                <span>Na Sua Bancada. </span> 
-            </h1>
-            <p>O MatureBox democratiza a arte da maturação. Controle temperatura e umidade com precisão algorítmica através de 
-                hardware open-source de baixo custo. Transforme ingredientes comuns em experiências culinárias extraordinárias.
-            </p>
-
-            <div>
-                <button class="botaomontar">
-                    <span> MONTAR O MEU </span>
-                </button>
-
-                <button class="botaofonte">
-                    <span> VER CÓDIGO FONTE </span>
-                </button>
-
-                <img src="" alt="">
+            <div class="indicator">
+                <span class="dot"></span>
+                <span>SISTEMA IoT ATIVO</span>
             </div>
 
+            <h1>
+                Precisão Laboratorial,<br>
+                <span>Na Sua Bancada.</span>
+            </h1>
 
+            <p>
+                O MatureBox democratiza a arte da maturação. Controle temperatura e umidade com precisão algorítmica através de hardware open-source de baixo custo. Transforme ingredientes comuns em experiências culinárias extraordinárias.
+            </p>
+
+            <div class="botoes-hero">
+                <button class="botaomontar">MONTAR O MEU</button>
+                <button class="botaofonte">VER CÓDIGO FONTE</button>
+            </div>
+
+            <img src="chef.png" alt="Chef MatureBox" class="imagem-chef">
         </div>
-        <div class="telemetria">
 
+        <div class="telemetria">
+            <h3>TELEMETRIA EM TEMPO REAL</h3>
+
+            <div class="card-telemetria">
+                <div class="info">
+                    <span class="label">TEMPERATURA</span>
+                    <span class="valor">2.4 <span>°C</span></span>
+                </div>
+                <div class="icone-circulo">🌡️</div>
+            </div>
+
+            <div class="card-telemetria">
+                <div class="info">
+                    <span class="label">UMIDADE</span>
+                    <span class="valor">75.0 <span>%</span></span>
+                </div>
+                <div class="icone-circulo">💧</div>
+            </div>
         </div>
     </section>
 
-    <script src="index.js"></script>
+    <!-- SEÇÃO ENGENHARIA ACESSÍVEL -->
+    <section class="secao-recursos">
+        <h2>Engenharia Acessível</h2>
+        <p class="subtitulo">
+            Construído com componentes de prateleira, o MatureBox oferece desempenho profissional por uma fração do custo de equipamentos comerciais.
+        </p>
 
+        <div class="grid-recursos">
+            <div class="card-recurso">
+                <div class="icon-box">⚡</div>
+                <h4>Controle Preciso</h4>
+                <p>Algoritmos PID garantem a estabilidade climática necessária para o desenvolvimento seguro de culturas complexas.</p>
+            </div>
+
+            <div class="card-recurso">
+                <div class="icon-box">⚙️</div>
+                <h4>Hardware Open-Source</h4>
+                <p>Baseado em microcontroladores acessíveis. Adapte, melhore e compartilhe suas modificações com a comunidade.</p>
+            </div>
+
+            <div class="card-recurso">
+                <div class="icon-box">📱</div>
+                <h4>Monitoramento Remoto</h4>
+                <p>Acompanhe seus projetos de qualquer lugar. Receba alertas se as condições saírem dos parâmetros ideais.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divisor">
+
+    <!-- SEÇÃO ARQUITETURA DO SISTEMA -->
+    <section class="secao-arquitetura">
+        <div class="imagem-equipamento">
+            <img src="camara.png" alt="Câmara MatureBox">
+        </div>
+
+        <div class="detalhes-arquitetura">
+            <h2>Arquitetura do Sistema</h2>
+            <p>
+                Construa sua própria câmara com nosso guia passo-a-passo. A lista de materiais é otimizada para custo-benefício sem comprometer a segurança alimentar.
+            </p>
+
+            <ul class="lista-componentes">
+                <li><span class="check">✔</span> Microcontrolador ESP32 com WiFi Integrado</li>
+                <li><span class="check">✔</span> Sensores SHT31 de alta precisão (Temp/Umid)</li>
+                <li><span class="check">✔</span> Módulo de Relé de Estado Sólido (SSR)</li>
+                <li><span class="check">✔</span> Umidificador Ultrassônico Modificado</li>
+                <li><span class="check">✔</span> Geladeira Frost-Free (Qualquer modelo usado)</li>
+            </ul>
+
+            <button class="botaofonte">VER LISTA COMPLETA (BOM)</button>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="coluna-brand">
+            <h3>MatureBox</h3>
+            <p>© 2026 MatureBox. Precision Maturation Technologies.</p>
+        </div>
+
+        <div class="coluna-links">
+            <h4>LINK</h4>
+            <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Technical Support</a></li>
+            </ul>
+        </div>
+
+        <div class="coluna-newsletter">
+            <h4>MANTENHA-SE ATUALIZADO</h4>
+            <p>Receba atualizações de firmware e novos projetos.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Seu email">
+                <button>ASSINAR</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>
