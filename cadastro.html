@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MatureBox - Login</title>
+  <title>MatureBox - Cadastro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="cadastro.css">
 </head>
 <body>
 
   <header class="navbar">
-     <a href="./index.html"><div class="logo">MatureBox</div></a>
+    <div class="logo">MatureBox</div>
     <nav class="nav-links">
       <a href="#">INSTRUÇÕES</a>
       <a href="#">PRODUÇÃO</a>
@@ -33,7 +33,7 @@
       <div class="welcome-section">
         <h1>Bem vindo!</h1>
         <p>
-          Faça agora o login e pare de perder tempo com processos manuais. É grátis, é rápido e você já começa a aproveitar tudo o que nossa plataforma tem a oferecer no mesmo minuto.
+          Cadastre-se agora e pare de perder tempo com processos manuais. É grátis, é rápido e você já começa a aproveitar tudo o que nossa plataforma tem a oferecer no mesmo minuto.
         </p>
       </div>
 
@@ -41,6 +41,11 @@
         <h2>Login</h2>
         <form class="login-form" onsubmit="event.preventDefault();">
           
+          <div class="input-group">
+            <label for="username">Nome Completo</label>
+            <input type="text" id="username" placeholder="Digite aqui...">
+          </div>
+
           <div class="input-group">
             <label for="username">Nome do Usuário</label>
             <input type="text" id="username" placeholder="Digite aqui...">
@@ -52,7 +57,7 @@
           </div>
 
           <div class="forgot-link">
-            <a href="./cadastro.html">Criar conta</a>
+            <a href="./index.html">Criar conta</a>
           </div>
 
           <button type="submit" class="btn-submit">Entrar</button>
