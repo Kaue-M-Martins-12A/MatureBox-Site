@@ -1,31 +1,195 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="index.css">
-    <title>MatureBox</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatureBox - Guia de Inicialização</title>
+  <link rel="stylesheet" href="./instrucoes.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <header class="cabecalho">
-        <h1 class="logo">MatureBox</h1>
+  <header class="navbar">
+    <div class="logo">MatureBox</div>
+    <nav class="nav-links">
+      <a href="./instrucoes.html" class="active">INSTRUÇÕES</a>
+      <a href="./producao.html">PRODUÇÃO</a>
+      <a href="./sobrenos.html">SOBRE NÓS</a>
+      <a href="./referencia.html">REFERÊNCIAS</a>
+      <a href="./jogo.html">JOGO</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Alternar tema"><i data-lucide="moon"></i></button>
+      <a href="./login.html" class="btn-get-started">GET STARTED</a>
+    </div>
+  </header>
 
-        <ul class="menu">
-            <a href="./index.html"><li>HOME</li></a>
-            <a href="./instrucoes.html"><li class="ativo">INSTRUÇÕES</li></a>
-            <a href="./producao.html"><li>PRODUÇÃO</li></a>
-            <a href="sobrenos.html"><li>SOBRE NÓS</li></a>
-            <a href="./referencia.html"><li>REFERÊNCIAS</li></a>
-            <a href="./jogo.html"><li>JOGO</li></a>
-        </ul>
+  <main class="container">
+    
 
-        <div class="acoes-cabecalho">
-            <button id="theme-toggle" class="theme-toggle">
-                <span class="icon lua">🌙</span>
-                <span class="icon sol">☀️</span>
-            </button>
-<button class="Login"><a href="login.html">GET STARTED</a></button>
+    <section class="page-header">
+      <h1>Guia de Inicialização do MatureBox</h1>
+      <p>Siga os passos técnicos precisos para configurar seu ambiente de maturação. Cada etapa é crucial para garantir a estabilidade do ecossistema IoT e a qualidade final do produto.</p>
+    </section>
+
+    <section class="steps-flow">
+      
+      <div class="step-card">
+        <div class="step-badge">1</div>
+        <div class="step-icon-top"><i data-lucide="smartphone"></i></div>
+        <div class="step-preview-screen mock-phone">
+          <div class="phone-app-header">
+            <i data-lucide="home"></i>
+            <span>Smart Maturação</span>
+          </div>
+          <div class="phone-app-body">
+            <div class="fridge-graphic"></div>
+            <button class="app-btn primary">Iniciar</button>
+            <button class="app-btn secondary">Criar conta</button>
+          </div>
         </div>
-    </header>
+      </div>
+
+      <div class="step-arrow"><i data-lucide="arrow-right"></i></div>
+
+      <div class="step-card">
+        <div class="step-badge">2</div>
+        <div class="step-icon-top"><i data-lucide="utensils"></i></div>
+        <div class="step-preview-screen mock-phone">
+          <div class="phone-app-header-sm">Novo ciclo</div>
+          <div class="phone-menu-list">
+            <div class="menu-item active">Carnes <i data-lucide="chevron-right"></i></div>
+            <div class="menu-item">Queijos <i data-lucide="chevron-right"></i></div>
+            <div class="menu-item">Linguiça <i data-lucide="chevron-right"></i></div>
+          </div>
+          <button class="app-btn primary sm">Iniciar ciclo</button>
+        </div>
+      </div>
+
+      <div class="step-arrow"><i data-lucide="arrow-right"></i></div>
+
+      <div class="step-card">
+        <div class="step-badge">3</div>
+        <div class="step-icon-top glow-icon"><i data-lucide="bell-ring"></i></div>
+        <div class="step-preview-screen mock-fridge">
+          <div class="fridge-display"></div>
+          <div class="fridge-chamber"></div>
+        </div>
+        <div class="step-footer-pill">
+          <i data-lucide="bell-ring"></i>
+        </div>
+      </div>
+
+      <div class="step-arrow"><i data-lucide="arrow-right"></i></div>
+
+      <div class="step-card">
+        <div class="step-badge">4</div>
+        <div class="step-icon-top"><i data-lucide="clock"></i></div>
+        <div class="step-preview-screen mock-fridge">
+          <div class="fridge-display"></div>
+          <div class="fridge-chamber"></div>
+        </div>
+        <div class="step-footer-metrics">
+          <span><i data-lucide="thermometer"></i> 15.5°C</span>
+          <span><i data-lucide="droplets"></i> 75%</span>
+        </div>
+      </div>
+
+      <div class="step-arrow"><i data-lucide="arrow-right"></i></div>
+
+      <div class="step-card">
+        <div class="step-badge">5</div>
+        <div class="step-icon-top glow-icon"><i data-lucide="bell-ring"></i></div>
+        <div class="step-preview-screen mock-fridge">
+          <div class="fridge-display"></div>
+          <div class="fridge-chamber"></div>
+        </div>
+        <div class="step-footer-pill">
+          <i data-lucide="bell-ring"></i>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="info-banner">
+      <h2>Guia de Inicialização do MatureBox</h2>
+      <p>Assista a este guia visual completo antes de iniciar o processo físico. O vídeo detalha a calibração inicial dos sensores e o pareamento com a rede.</p>
+    </section>
+
+    <section class="details-grid">
+      
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="icon-box"><i data-lucide="zap"></i></div>
+          <span class="step-number">01</span>
+        </div>
+        <h3>Energização</h3>
+        <p>Conecte o dispositivo a uma fonte de energia ininterrupta. Aguarde o ciclo de boot do sistema central. O LED indicador frontal piscará em azul elétrico durante a inicialização.</p>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="icon-box"><i data-lucide="wifi"></i></div>
+          <span class="step-number">02</span>
+        </div>
+        <h3>Conectividade IoT</h3>
+        <p>Acesse o painel web local via IP padrão. Configure os parâmetros da sua rede Wi-Fi para permitir o envio contínuo de telemetria dos sensores para a nuvem.</p>
+      </div>
+
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="icon-box"><i data-lucide="thermometer"></i></div>
+          <span class="step-number">03</span>
+        </div>
+        <h3>Calibração Térmica</h3>
+        <p>Execute a rotina de auto-calibração no aplicativo. O sistema estabilizará a temperatura interna e validará a precisão dos termopares antes do uso.</p>
+      </div>
+
+
+      <div class="detail-card span-2">
+        <div class="detail-card-header">
+          <div class="icon-box"><i data-lucide="flask-conical"></i></div>
+          <span class="step-number">04</span>
+        </div>
+        <div class="detail-card-content">
+          <div class="text-side">
+            <h3>Inoculação e Setup</h3>
+            <p>Com o ambiente estabilizado, insira o produto alvo. Selecione o perfil de maturação correspondente no painel de controle. O sistema ajustará a umidade relativa e o fluxo de ar automaticamente com base no algoritmo preditivo.</p>
+          </div>
+          <div class="code-terminal">
+            <pre><code>&gt; STATUS: AGUARDANDO PRODUTO
+&gt; UMIDADE ALVO: 85%
+&gt; TEMPERATURA: 2.5°C</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="icon-box"><i data-lucide="line-chart"></i></div>
+          <span class="step-number">05</span>
+        </div>
+        <h3>Monitoramento</h3>
+        <p>O processo inicia. Utilize a aba 'Dashboard' para visualizar os gráficos em tempo real. Alertas serão emitidos caso haja desvio dos parâmetros ideais.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="logo">MatureBox</div>
+      <p>© 2026 MatureBox. Precision Maturation Technologies.</p>
+    </div>
+    <div class="footer-right">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Technical Support</a>
+    </div>
+  </footer>
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

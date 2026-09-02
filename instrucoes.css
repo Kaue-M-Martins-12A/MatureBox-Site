@@ -1,1 +1,344 @@
 @import url('global.css');
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #02030d;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 4rem;
+  background-color: #02030d;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.nav-links a {
+  color: #8b92a5;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 4px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn-get-started {
+  background-color: #3b37ff;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+}
+
+/* HEADER DA PÁGINA */
+.page-header {
+  max-width: 750px;
+  margin-bottom: 3.5rem;
+}
+
+.page-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.page-header p {
+  color: #9aa1b4;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* GRADE DE REFERÊNCIAS */
+.references-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 1.2rem;
+}
+
+/* ESTILOS DE CARDS */
+.card {
+  background-color: #121425;
+  border-radius: 6px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-featured {
+  min-height: 320px;
+}
+
+.card-wide {
+  grid-column: 2;
+  grid-row: span 2;
+  /* Reordenação para encaixar perfeitamente como na imagem */
+}
+
+/* BADGES DE CATEGORIA */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.2rem;
+}
+
+.badge-purple { color: #b17aff; }
+.badge-indigo { color: #7f89ff; }
+.badge-orange { color: #f28b82; }
+
+/* REORGANIZAÇÃO DO GRID */
+.references-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.2rem;
+}
+
+.card-featured {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.card:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.card-stat {
+  grid-column: 1;
+  grid-row: 2;
+  max-width: 320px;
+}
+
+.card-wide {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Reajuste de Grid para a linha inferior ficar lado a lado */
+@media (min-width: 900px) {
+  .references-grid {
+    grid-template-columns: 1.8fr 1fr;
+    grid-template-areas:
+      "featured  iot"
+      "stat      microbiology";
+  }
+
+  .card-featured { grid-area: featured; }
+  .card:nth-child(2) { grid-area: iot; }
+  .card-stat { grid-area: stat; width: 100%; }
+  .card-wide { grid-area: microbiology; }
+}
+
+/* CONTEÚDO DOS CARDS */
+.card h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+.card p {
+  color: #8b92a5;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+/* FOOTER DOS CARDS */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.card-footer.align-end {
+  justify-content: flex-end;
+}
+
+.journal-info {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.card-link {
+  color: #a5adff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+
+.card-link:hover {
+  color: #ffffff;
+}
+
+.download-btn {
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* CARD DE ESTATÍSTICA (PRECISÃO COMPROVADA) */
+.card-stat {
+  background-color: #121425;
+}
+
+.stat-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stat-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #b17aff;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-icon-box {
+  background-color: #1a1c35;
+  border-radius: 8px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b3d54;
+  font-size: 1.8rem;
+}
+
+/* FOOTER DA PÁGINA */
+.footer {
+  background-color: #02030d;
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 4rem;
+}
+
+.footer-left p {
+  color: #5d6375;
+  font-size: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: right;
+}
+
+.footer-right a {
+  color: #8f95a8;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.footer-right a:hover {
+  color: #ffffff;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 850px) {
+  .references-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .card-featured,
+  .card:nth-child(2),
+  .card-stat,
+  .card-wide {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+}
