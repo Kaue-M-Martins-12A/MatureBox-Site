@@ -15,9 +15,9 @@
         <ul class="menu">
             <a href="./index.html"><li>HOME</li></a>
             <a href="./instrucoes.html"><li>INSTRUÇÕES</li></a>
-            <a href="./producao.html"><li class="ativo">PRODUÇÃO</li></a>
+            <a href="./producao.html"><li<<li class="ativo">PRODUÇÃO</li></a>
             <a href="./sobrenos.html"><li>SOBRE NÓS</li></a>
-            <a href="./referencia.html"><li>REFERÊNCIAS</li></a>
+            <a href="./referencia.html"><<li>REFERÊNCIAS</li></a>
             <a href="./jogo.html"><li>JOGO</li></a>
         </ul>
 
@@ -29,3 +29,124 @@
 <button class="Login"><a href="login.html">GET STARTED</a></button>
         </div>
     </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>O Projeto Final</h1>
+        <p>A MatureBox é a culminação de precisão em IoT e ciência de alimentos. Uma câmara de maturação controlada projetada para resultados consistentes e profissionais, construída com componentes acessíveis e montagem modular.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary">INICIAR MONTAGEM</a>
+          <a href="#" class="btn btn-outline">VER CÓDIGO</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="./imagem/componentes.png" alt="Componentes MatureBox">
+      </div>
+    </section>
+
+    <section class="bom-section">
+      <h2 class="section-title">Lista de Componentes (BOM)</h2>
+      
+      <div class="grid-layout">
+        <div class="cards-grid">
+          
+          <div class="card">
+            <div class="card-header">
+              <i class="fa-solid fa-microchip"></i>
+              <span class="price">R$ 150,00</span>
+            </div>
+            <h3>Microcontrolador ESP32</h3>
+            <p>O cérebro da operação. Responsável pela leitura dos sensores, controle dos relés e comunicação Wi-Fi para telemetria.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <i class="fa-solid fa-temperature-half"></i>
+              <span class="price">R$ 45,00</span>
+            </div>
+            <h3>Sensor DHT22</h3>
+            <p>Sensor de precisão para temperatura e umidade relativa do ar. Crucial para manter o ambiente de maturação estável.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <i class="fa-solid fa-bolt"></i>
+              <span class="price">R$ 30,00</span>
+            </div>
+            <h3>Módulo Relé 4 Canais</h3>
+            <p>Atuadores de estado sólido para ligar e desligar o compressor da geladeira, umidificador, exaustor e resistência de aquecimento.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <i class="fa-solid fa-plug"></i>
+              <span class="price">R$ 60,00</span>
+            </div>
+            <h3>Fonte de Alimentação 5V/12V</h3>
+            <p>Fornece energia estabilizada para a placa controladora, sensores e pequenos atuadores como ventoinhas.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <i class="fa-solid fa-cloud"></i>
+              <span class="price">R$ 30,00</span>
+            </div>
+            <h3>Umidificador Ultrassônico</h3>
+            <p>Módulo gerador de névoa para elevar a umidade interna sem gerar calor residual. Essencial para cura de queijos e embutidos.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <i class="fa-solid fa-fan"></i>
+              <span class="price">R$ 40,00</span>
+            </div>
+            <h3>Ventoinhas de Exaustão (x2)</h3>
+            <p>Coolers de 120mm para renovação de ar e circulação interna, evitando pontos de estagnação e proliferação de fungos indesejados.</p>
+          </div>
+
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-header">
+            <i class="fa-solid fa-receipt"></i>
+            <h3>Resumo de Custos Estimados</h3>
+          </div>
+          <ul class="cost-list">
+            <li>
+              <span>Eletrônica Base</span>
+              <span>R$ 285,00</span>
+            </li>
+            <li>
+              <span>Atuadores Climatização</span>
+              <span>R$ 120,00</span>
+            </li>
+            <li>
+              <span>Estrutura Física</span>
+              <span>R$ 150,00</span>
+            </li>
+          </ul>
+          <div class="total-cost">
+            <span>Custo Total Aproximado</span>
+            <strong>R$ 555,00</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="logo">MatureBox</div>
+      <p>© 2026 MatureBox. Precision Maturation Technologies.</p>
+    </div>
+    <div class="footer-right">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Technical Support</a>
+    </div>
+  </footer>
+
+</body>
+</html>
