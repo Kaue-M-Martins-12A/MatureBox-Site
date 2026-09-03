@@ -16,41 +16,48 @@ body {
 /* Header & Navbar */
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 4rem;
-  background-color: #030417;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background-color: rgba(3, 3, 13, 0.95);
+  border-bottom: 1px solid #1a1b3a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   letter-spacing: -0.5px;
+  color: #ffffff;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.8rem;
+  gap: 2rem;
 }
 
 .nav-links a {
-  color: #a0a5ba;
+  color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: color 0.2s;
 }
 
-.nav-links a.active,
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a.active {
   color: #ffffff;
+}
+
+.nav-links a.active {
   border-bottom: 2px solid #ffffff;
   padding-bottom: 4px;
 }
 
-.nav-actions {
+.header-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -59,20 +66,36 @@ body {
 .icon-btn {
   background: transparent;
   border: none;
-  color: #ffffff;
-  font-size: 1rem;
+  color: var(--text-muted);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
 }
 
-.btn-get-started {
-  background-color: #3b37ff;
-  color: #ffffff;
+.icon-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-primary {
+  background: var(--accent-purple);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background: #4338ca;
+  transform: translateY(-1px);
 }
 
 /* Container Principal */
