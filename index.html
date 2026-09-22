@@ -1,70 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>MatureBox</title>
 </head>
-
 <body>
-
-    <header class="cabecalho">
-
-        <h1>MatureBox</h1>
-
-        <ul class="menu">
-            <li>Home</li>
-            <li>Instruções</li>
-            <li>Produção</li>
-            <li>Sobre Nós</li>
-            <li>Referências</li>
-            <li>Jogo</li>
-        </ul>
-
-        <button id="theme-toggle" class="theme-toggle">
-            <span class="icon lua">🌙</span>
-            <span class="icon sol">☀️</span>
-        </button>
-
-        <button class="Login">Login</button>
-
-    </header>
-    <section>
-        <div class="pl">
-
-            <h3 class="indicator"> SISTEMA IoT ATIVO </h3>
-            <br>
-            <h1> Precisão Laboratorial,
-            <h1> Precisão Laboratorial
-            <h1> Precisão Laboratorial,
-                <br>
-                <span>Na Sua Bancada. </span> 
-            </h1>
-            <p>O MatureBox democratiza a arte da maturação. Controle temperatura e umidade com precisão algorítmica através de 
-                hardware open-source de baixo custo. Transforme ingredientes comuns em experiências culinárias extraordinárias.
-            </p>
-
-            <div>
-                <button class="botaomontar">
-                    <span> MONTAR O MEU </span>
-                </button>
-
-                <button class="botaofonte">
-                    <span> VER CÓDIGO FONTE </span>
-                </button>
-
-                <img src="" alt="">
+    <div class="page-shell">
+        <header class="cabecalho">
+            <div class="brand">
+                <span>MatureBox</span>
             </div>
 
+            <nav class="menu" aria-label="Menu principal">
+                <a href="#">HOME</a>
+                <a href="#">INSTRUÇÕES</a>
+                <a href="#">PRODUÇÃO</a>
+                <a href="#">SOBRE NÓS</a>
+                <a href="#">REFERÊNCIAS</a>
+                <a href="#">JOGO</a>
+            </nav>
 
-        </div>
-        <div class="telemetria">
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle">
+                    <span class="icon lua">🌙</span>
+                    <span class="icon sol">☀️</span>
+                </button>
+                <button class="login">GET STARTED</button>
+            </div>
+        </header>
 
-        </div>
-    </section>
+        <main class="main-content">
+            <section class="hero">
+                <div class="hero-copy">
+                    <div class="status-line">
+                        <span class="status-dot"></span>
+                        <span>SISTEMA IOT ATIVO</span>
+                    </div>
+
+                    <h1>
+                        Precisão Laboratorial,<br>
+                        <span>Na Sua Bancada.</span>
+                    </h1>
+
+                    <p>
+                        O MatureBox democratiza a arte da maturação. Controle temperatura e umidade com precisão algorítmica através de hardware open-source de baixo custo. Transforme ingredientes comuns em experiências culinárias extraordinárias.
+                    </p>
+
+                    <div class="cta-row">
+                        <button class="button primary">MONTAR O MEU</button>
+                        <button class="button secondary">VER CÓDIGO FONTE</button>
+                    </div>
+                </div>
+
+                <aside class="telemetria" aria-label="Telemetria em tempo real">
+                    <div class="telemetry-header">TELEMETRIA EM TEMPO REAL</div>
+
+                    <div class="telemetry-row">
+                        <span>TEMPERATURA</span>
+                        <strong>2.4<span>°C</span></strong>
+                    </div>
+
+                    <div class="telemetry-row">
+                        <span>UMIDADE</span>
+                        <strong>75.0<span>%</span></strong>
+                    </div>
+
+                    <div class="chef-figure" aria-hidden="true">
+                        <div class="hat"></div>
+                        <div class="head"></div>
+                        <div class="body"></div>
+                        <div class="arm arm-left"></div>
+                        <div class="arm arm-right"></div>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="feature-showcase">
+                <article class="feature-card">
+                    <div class="feature-icon">◫</div>
+                    <h3>Controle Preciso</h3>
+                    <p>Algoritmos precisos ajudam a manter temperaturas estáveis e consistentes por longos períodos.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">◫</div>
+                    <h3>Hardware Open-Source</h3>
+                    <p>Com acesso ao projeto, você consegue personalizar, adaptar e evoluir a plataforma de acordo com suas necessidades.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">◬</div>
+                    <h3>Monitoramento Remoto</h3>
+                    <p>Acompanhe e ajuste o sistema de qualquer lugar, com leitura em tempo real e relatórios acessíveis.</p>
+                </article>
+            </section>
+
+            <section class="architecture">
+                <div class="fridge-visual" aria-hidden="true">
+                    <div class="fridge-shell">
+                        <div class="fridge-door">
+                            <div class="shelf shelf-1"></div>
+                            <div class="shelf shelf-2"></div>
+                            <div class="shelf shelf-3"></div>
+                            <div class="meat meat-1"></div>
+                            <div class="meat meat-2"></div>
+                            <div class="meat meat-3"></div>
+                            <div class="meat meat-4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="architecture-copy">
+                    <h2>Arquitetura do Sistema</h2>
+                    <p>
+                        Construída com uma próxima geração de sensores, o MatureBox oferece uma solução robusta para cozinhas domésticas e laboratoriais.
+                    </p>
+
+                    <ul>
+                        <li>Microcontrolador ESP32 com Wi-Fi integrado</li>
+                        <li>Sensor DHT22 de alta precisão (Temp/Umidade)</li>
+                        <li>Módulo de Rele de Estado Sólido (SSR)</li>
+                        <li>Umidificador Ultrassônico Modificado</li>
+                        <li>Geladeira Freezer (Qualquer modelo usado)</li>
+                    </ul>
+
+                    <button class="button tertiary">VER LISTA COMPLETA (3)</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-brand">
+                <div class="brand mini-brand">
+                    <span class="logo-mark"></span>
+                    <span>MatureBox</span>
+                </div>
+                <p>© 2020 MatureBox. Precisão Maturação Technology.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>LINK</h4>
+                <ul>
+                    <li>Contact</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Service</li>
+                    <li>Technical Support</li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>MANTENHA-SE ATUALIZADO</h4>
+                <p>Receba atualizações de firmware e novos projetos.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Seu email" aria-label="Seu email">
+                    <button>ASSINAR</button>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="index.js"></script>
-
 </body>
 </html>
