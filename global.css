@@ -98,7 +98,7 @@ main {
         gap: 20px;
     }
 
-    .Login {
+    .btn-primary {
         padding: 10px 20px;
         color: #ffffff;
         background-color: var(--lilas);
