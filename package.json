@@ -13,6 +13,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
+=======
+  "type": "commonjs",
+>>>>>>> 29c0d882789bb2d903a4a3417d1e14995da6cc0e
   "bugs": {
     "url": "https://github.com/Leciane-Silva12A/MatureBox-Site/issues"
   },
