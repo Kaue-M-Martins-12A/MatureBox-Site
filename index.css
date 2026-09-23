@@ -224,16 +224,58 @@ body {
   border-color: var(--accent-purple);
 }
 
-.hero-chef-avatar {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  font-size: 5rem;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
-  opacity: 0.9;
+
+.hero-card {
+  position: relative;
+  background: #06061e; /* tom escuro do fundo */
+  border: 1px solid #14163c;
+  border-radius: 12px;
+  padding: 2.5rem;
+ 
+  overflow: visible; 
+  display: flex;
+  flex-direction: column;
 }
 
-/* CARDS DE TELEMETRIA */
+
+.status-badge,
+.hero-title,
+.hero-description {
+  position: relative;
+  z-index: 2;
+  max-width: 68%; /* Limita a largura do texto */
+}
+
+
+.hero-cta-group {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 1rem;
+  max-width: 60%;
+  margin-top: auto; /* Empurra para a parte inferior */
+}
+
+
+.hero-chef-avatar {
+  position: absolute;
+  right: 15px;         /* Distância do canto direito */
+  bottom: -15px;       /* Faz o corpo sair ligeiramente do limite inferior do card */
+  height: 210px;       /* Altura exata em proporção ao card */
+  z-index: 3;          /* Fica em camada superior */
+  pointer-events: none;/* Evita interferência de cliques */
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-chef-avatar img {
+  height: 100%;
+  width: auto;         /* Mantém a proporção original de largura/altura */
+  object-fit: contain; /* Evita qualquer distorção na imagem */
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.5));
+}
+
+
 .telemetry-card {
   background: var(--bg-card);
   border: 1px solid var(--bg-card-border);
