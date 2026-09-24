@@ -1,5 +1,9 @@
-const botao = document.querySelector("#theme-toggle");
+const themeToggle = document.getElementById('theme-toggle');
 
-botao.addEventListener("click", () => {
-    document.body.classList.toggle("claro");
+themeToggle.addEventListener('change', () => {
+  if (themeToggle.checked) {
+    document.body.classList.add('dark-mode');
+  } else {
+    document.body.classList.remove('dark-mode');
+  }
 });
