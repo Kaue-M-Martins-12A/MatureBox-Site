@@ -106,7 +106,6 @@ body {
   transform: scale(0.5);
 }
 
-/* --- Estado Ativo (Modo Escuro / Ligado) --- */
 .theme-switch input:checked + .slider {
   background-color: #000000;
 }
@@ -694,7 +693,6 @@ body {
   background: #4338ca;
 }
 
-/* RESPONSIVIDADE */
 @media (max-width: 900px) {
   .hero-section-grid {
     grid-template-columns: 1fr;
