@@ -45,6 +45,8 @@ body {
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #ffffff;
+  text-decoration: none;
+  color: inherit;
 }
 
 .nav-links {

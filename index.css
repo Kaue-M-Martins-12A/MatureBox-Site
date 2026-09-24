@@ -88,47 +88,13 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Ícones */
-.theme-switch .icon {
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  transition: opacity 0.2s ease, transform 0.3s ease;
-}
-
-.theme-switch .sun-icon {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.theme-switch .moon-icon {
-  opacity: 0;
-  transform: scale(0.5);
-}
-
-.theme-switch input:checked + .slider {
-  background-color: #000000;
-}
-
-.theme-switch input:checked + .slider .slider-thumb {
-  transform: translateX(28px);
-}
-
-.theme-switch input:checked + .slider .sun-icon {
-  opacity: 0;
-  transform: scale(0.5);
-}
-
-.theme-switch input:checked + .slider .moon-icon {
-  opacity: 1;
-  transform: scale(1);
-}
 
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #ffffff;
+  text-decoration: none;
 }
 
 .nav-links {
