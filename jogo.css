@@ -382,44 +382,6 @@ body {
   background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
 }
 
-.mockup-steak {
-  font-size: 6rem;
-  position: absolute;
-  left: 20px;
-  bottom: 30px;
-  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.8));
-}
-
-.mockup-book {
-  position: absolute;
-  right: 10px;
-  bottom: 20px;
-  background: #0f172a;
-  border: 2px solid #fbbf24;
-  border-radius: 4px;
-  width: 90px;
-  height: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.9);
-  transform: rotate(5deg);
-}
-
-.book-title {
-  color: #fbbf24;
-  font-size: 0.6rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.book-lock {
-  font-size: 1.5rem;
-}
-
-/* RODAPÉ DA PÁGINA */
 .footer {
   margin-top: auto;
   border-top: 1px solid #1a1b3a;
