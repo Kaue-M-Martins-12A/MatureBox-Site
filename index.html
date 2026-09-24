@@ -8,35 +8,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="page-shell">
-  <header class="cabecalho navbar">
-    <div class="brand logo">
-      <span class="logo-mark"></span>
-      <span>MatureBox</span>
-    </div>
 
-    <nav class="menu nav-links" aria-label="Menu principal">
-      <a href="#">HOME</a>
-      <a href="#">INSTRUÇÕES</a>
-      <a href="#">PRODUÇÃO</a>
-      <a href="#">SOBRE NÓS</a>
-      <a href="#">REFERÊNCIAS</a>
-      <a href="#">JOGO</a>
+  <header class="navbar">
+    <div class="logo"> <a href="./index.html">MatureBox</a> </div>
+    <nav class="nav-links">
+      <a href="./instrucoes.html">INSTRUÇÕES</a>
+      <a href="./producao.html">PRODUÇÃO</a>
+      <a href="./sobrenos.html">SOBRE NÓS</a>
+      <a href="./referencia.html">REFERÊNCIAS</a>
+      <a href="./jogo.html">JOGO</a>
     </nav>
-
     <div class="header-actions">
-      <button id="theme-toggle" class="theme-toggle icon-btn" aria-label="Alternar tema">
-        <span class="icon lua">🌙</span>
-        <span class="icon sol">☀️</span>
+      <button class="icon-btn" aria-label="Notificações">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          <line x1="2" y1="2" x2="22" y2="22"></line>
+        </svg>
       </button>
-      <button class="login btn-primary">GET STARTED</button>
+      <a href="./login.html" class="btn-primary">GET STARTED</a>
     </div>
   </header>
 
-  <main class="main-content container">
-    <section class="hero hero-section-grid">
-      <div class="hero-copy hero-card">
-        <div class="status-line status-badge">
+  <main class="container">
+    
+    <!-- SEÇÃO HERO & TELEMETRIA -->
+    <section class="hero-section-grid">
+      
+      <!-- HERO PRINCIPAL ESQUERDA -->
+      <div class="hero-card">
+        <div class="status-badge">
           <span class="status-dot"></span>
           <span>SISTEMA IOT ATIVO</span>
         </div>
@@ -50,19 +51,33 @@
           O MatureBox democratiza a arte da maturação. Controle temperatura e umidade com precisão algorítmica através de hardware open-source de baixo custo. Transforme ingredientes comuns em experiências culinárias extraordinárias.
         </p>
 
-        <div class="cta-row hero-cta-group">
-          <button class="button primary btn-solid-blue">MONTAR O MEU</button>
-          <button class="button secondary btn-outline-blue">VER CÓDIGO FONTE</button>
+        <div class="hero-cta-group">
+          <a href="#" class="btn-solid-blue">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            MONTAR O MEU
+          </a>
+          <a href="#" class="btn-outline-blue">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            VER CÓDIGO FONTE
+          </a>
         </div>
+
+        <div class="hero-chef-avatar"> <img src="./imagem/chefe.png" alt="Chefe"> </div>
       </div>
 
-      <aside class="telemetria telemetry-card" aria-label="Telemetria em tempo real">
-        <div class="telemetry-header">TELEMETRIA EM TEMPO REAL</div>
-
-        <div class="telemetry-row telemetry-item">
-          <div>
+      <!-- CARDS DE TELEMETRIA DIREITA -->
+      <div class="telemetry-card">
+        <h2 class="telemetry-header">TELEMETRIA EM TEMPO REAL</h2>
+        
+        <div class="telemetry-item">
+          <div class="telemetry-info">
             <span class="telemetry-label">TEMPERATURA</span>
-            <strong>2.4<span>°C</span></strong>
+            <div class="telemetry-value">2.4<span class="unit">°C</span></div>
           </div>
           <div class="telemetry-icon icon-blue">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -71,10 +86,10 @@
           </div>
         </div>
 
-        <div class="telemetry-row telemetry-item">
-          <div>
+        <div class="telemetry-item">
+          <div class="telemetry-info">
             <span class="telemetry-label">UMIDADE</span>
-            <strong>75.0<span>%</span></strong>
+            <div class="telemetry-value">75.0<span class="unit">%</span></div>
           </div>
           <div class="telemetry-icon icon-purple">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -82,110 +97,140 @@
             </svg>
           </div>
         </div>
+      </div>
 
-        <div class="chef-figure" aria-hidden="true">
-          <div class="hat"></div>
-          <div class="head"></div>
-          <div class="body"></div>
-          <div class="arm arm-left"></div>
-          <div class="arm arm-right"></div>
-        </div>
-      </aside>
     </section>
 
-    <section class="feature-showcase accessible-engineering">
-      <article class="feature-card">
-        <div class="feature-icon">◫</div>
-        <h3>Controle Preciso</h3>
-        <p>Algoritmos precisos ajudam a manter temperaturas estáveis e consistentes por longos períodos.</p>
-      </article>
+    <!-- SEÇÃO ENGENHARIA ACESSÍVEL -->
+    <section class="accessible-engineering">
+      <div class="section-header center">
+        <h2 class="section-title">Engenharia Acessível</h2>
+        <p class="section-description">
+          Construída com componentes de prateleira, o MatureBox oferece desempenho profissional por uma fração do custo de equipamentos comerciais.
+        </p>
+      </div>
 
-      <article class="feature-card">
-        <div class="feature-icon">◫</div>
-        <h3>Hardware Open-Source</h3>
-        <p>Com acesso ao projeto, você consegue personalizar, adaptar e evoluir a plataforma de acordo com suas necessidades.</p>
-      </article>
+      <div class="features-grid">
+        
+        <!-- CARD FEATURE 1 -->
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Controle Preciso</h3>
+          <p class="feature-text">
+            Algoritmos PID garantem a estabilidade microclimática necessária para o desenvolvimento seguro de culturas complexas.
+          </p>
+        </article>
 
-      <article class="feature-card">
-        <div class="feature-icon">◬</div>
-        <h3>Monitoramento Remoto</h3>
-        <p>Acompanhe e ajuste o sistema de qualquer lugar, com leitura em tempo real e relatórios acessíveis.</p>
-      </article>
+        <!-- CARD FEATURE 2 -->
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+            </svg>
+          </div>
+          <h3 class="feature-title">Hardware Open-Source</h3>
+          <p class="feature-text">
+            Baseado em microcontroladores acessíveis. Adapte, melhore e compartilhe suas modificações com a comunidade.
+          </p>
+        </article>
+
+        <!-- CARD FEATURE 3 -->
+        <article class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Monitoramento Remoto</h3>
+          <p class="feature-text">
+            Acompanhe seus projetos de qualquer lugar. Receba alertas se as condições saírem dos parâmetros ideais.
+          </p>
+        </article>
+
+      </div>
     </section>
 
     <hr class="divider">
 
-
+    <!-- SEÇÃO ARQUITETURA DO SISTEMA -->
     <section class="system-architecture">
       <div class="chamber-mockup">
         <img src="./imagem/maturador.png" alt="Mockup da Câmara de Maturação">
-  
-      </div>
-    <section class="architecture system-architecture">
-      <div class="fridge-visual chamber-mockup" aria-hidden="true">
-        <div class="fridge-shell chamber-box-visual">
-          <div class="fridge-door">
-            <div class="shelf shelf-1"></div>
-            <div class="shelf shelf-2"></div>
-            <div class="shelf shelf-3"></div>
-            <div class="meat meat-1"></div>
-            <div class="meat meat-2"></div>
-            <div class="meat meat-3"></div>
-            <div class="meat meat-4"></div>
-          </div>
-        </div>
       </div>
 
-
-      <div class="architecture-copy architecture-content">
-        <h2>Arquitetura do Sistema</h2>
-        <p>
-          Construída com uma próxima geração de sensores, o MatureBox oferece uma solução robusta para cozinhas domésticas e laboratoriais.
+      <div class="architecture-content">
+        <h2 class="arch-title">Arquitetura do Sistema</h2>
+        <p class="arch-desc">
+          Construa sua própria câmara com nosso guia passo-a-passo. A lista de materiais é otimizada para custo-benefício sem comprometer a segurança alimentar.
         </p>
 
-        <ul>
-          <li>Microcontrolador ESP32 com Wi-Fi integrado</li>
-          <li>Sensor DHT22 de alta precisão (Temp/Umidade)</li>
-          <li>Módulo de Rele de Estado Sólido (SSR)</li>
-          <li>Umidificador Ultrassônico Modificado</li>
-          <li>Geladeira Freezer (Qualquer modelo usado)</li>
+        <ul class="arch-list">
+          <li>
+            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Microcontrolador ESP32 com Wi-Fi integrado</strong></span>
+          </li>
+          <li>
+            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Sensores SHT31 de alta precisão (Temp/Umid)</strong></span>
+          </li>
+          <li>
+            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Módulo de Relé de Estado Sólido (SSR)</strong></span>
+          </li>
+          <li>
+            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Umidificador Ultrassônico Modificado</strong></span>
+          </li>
+          <li>
+            <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span><strong>Geladeira Frost-free (Qualquer modelo usado)</strong></span>
+          </li>
         </ul>
 
-        <button class="button tertiary btn-outline-purple">VER LISTA COMPLETA (3)</button>
+        <a href="#" class="btn-outline-purple font-mono">VER LISTA COMPLETA (BOM)</a>
       </div>
     </section>
+
   </main>
 
-  <footer class="site-footer footer">
+  <footer class="footer">
     <div class="footer-brand">
-      <div class="brand logo">
-        <span class="logo-mark"></span>
-        <span>MatureBox</span>
-      </div>
-      <p>© 2020 MatureBox. Precisão Maturação Technology.</p>
+      <div class="logo">MatureBox</div>
+      <p>© 2026 MatureBox. Precision Maturation Technologies.</p>
     </div>
 
-    <div class="footer-links footer-col">
-      <h4>LINK</h4>
-      <ul>
-        <li>Contact</li>
-        <li>Privacy Policy</li>
-        <li>Terms of Service</li>
-        <li>Technical Support</li>
-      </ul>
+    <div class="footer-col">
+      <h4 class="footer-heading">LINK</h4>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Technical Support</a>
     </div>
 
-    <div class="footer-newsletter footer-col newsletter-col">
-      <h4>MANTENHA-SE ATUALIZADO</h4>
+    <div class="footer-col newsletter-col">
+      <h4 class="footer-heading">MANTENHA-SE ATUALIZADO</h4>
       <p>Receba atualizações de firmware e novos projetos.</p>
       <form class="newsletter-form" onsubmit="event.preventDefault();">
-        <input type="email" placeholder="Seu email" aria-label="Seu email" required>
+        <input type="email" placeholder="Seu email" required>
         <button type="submit">ASSINAR</button>
       </form>
     </div>
   </footer>
-</div>
 
-<script src="index.js"></script>
 </body>
 </html>
