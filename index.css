@@ -24,7 +24,7 @@ body {
   flex-direction: column;
 }
 
-/* NAVEGAÇÃO / HEADER */
+/* NAVEGAÇÃO / HEADER CORRIGIDO */
 .navbar {
   display: flex;
   align-items: center;
@@ -38,63 +38,19 @@ body {
   backdrop-filter: blur(8px);
 }
 
-/* Garante alinhamento dos itens na barra de navegação */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px; /* Espaçamento entre os botões */
-}
-
-/* Container do Toggle */
-.theme-switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 32px;
-  flex-shrink: 0;
-}
-
-.theme-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Trilho / Fundo */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #E2E2F6;
-  transition: 0.3s;
-  border-radius: 32px;
-  padding: 3px;
-  box-sizing: border-box;
-}
-
-/* Círculo deslizante */
-.slider-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 26px;
-  height: 26px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: #ffffff;
-  text-decoration: none;
+}
+
+/* CORREÇÃO DO LOGO: Força texto branco sem fundo roxo ou borda */
+.logo a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none;
 }
 
 .nav-links {
@@ -110,14 +66,18 @@ body {
   letter-spacing: 0.5px;
   transition: color 0.2s;
   text-transform: uppercase;
+  background: transparent;
+  border: none;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover {
   color: #ffffff;
 }
 
+/* CORREÇÃO DO LINK ATIVO: Apenas barra inferior sem caixas roxas em volta */
 .nav-links a.active {
-  border-bottom: 2px solid #ffffff;
+  color: #ffffff;
+  border-bottom: 2px solid var(--accent-purple);
   padding-bottom: 4px;
 }
 
@@ -276,51 +236,19 @@ body {
   border-color: var(--accent-purple);
 }
 
-.hero-card {
-  position: relative;
-  background: #06061e; 
-  border: 1px solid #14163c;
-  border-radius: 12px;
-  padding: 2.5rem;
-  
-  overflow: visible; 
-  display: flex;
-  flex-direction: column;
-}
-
-.status-badge,
-.hero-title,
-.hero-description {
-  position: relative;
-  z-index: 2;
-  max-width: 68%; 
-}
-
-.hero-cta-group {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  gap: 1rem;
-  max-width: 60%;
-  margin-top: auto; 
-}
-
 .hero-chef-avatar {
   position: absolute;
-  right: 20px;         
-  bottom: -15px;       
-  height: 300px;       
-  z-index: 5;          
-  pointer-events: none;
-  display: flex;
-  align-items: flex-end;
+  right: 20px;
+  bottom: 20px;
+  font-size: 5rem;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+  opacity: 0.9;
 }
 
 .hero-chef-avatar img {
-  height: 100%;
-  width: auto;         
-  object-fit: contain; 
-  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.5));
+  height: 180px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* CARDS DE TELEMETRIA */
@@ -482,37 +410,10 @@ body {
   justify-content: center;
 }
 
-.chamber-box-visual {
-  width: 260px;
-  height: 280px;
-  background: #02040a;
-  border: 4px solid #334155;
-  border-radius: 8px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
-}
-
-.chamber-screen {
-  background: #0f172a;
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
-  padding: 4px 8px;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.chamber-content {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.chamber-mockup img {
+  max-width: 280px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
 }
 
 .architecture-content {
@@ -659,6 +560,7 @@ body {
   background: #4338ca;
 }
 
+/* RESPONSIVIDADE */
 @media (max-width: 900px) {
   .hero-section-grid {
     grid-template-columns: 1fr;

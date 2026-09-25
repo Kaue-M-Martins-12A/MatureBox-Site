@@ -129,7 +129,6 @@ body {
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #ffffff;
-  text-decoration: none;
 }
 
 .nav-links {
@@ -155,6 +154,7 @@ body {
   border-bottom: 2px solid #ffffff;
   padding-bottom: 4px;
 }
+
 
 .header-actions {
   display: flex;
@@ -261,8 +261,8 @@ body {
 
 /* IMAGEM / AVATAR DO MEMBRO */
 .avatar-container {
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1.25rem;
@@ -274,7 +274,7 @@ body {
 }
 
 .avatar-placeholder {
-  font-size: 3.5rem;
+  font-size: 1.0rem;
 }
 
 /* TEXTOS DOS CARDS */
