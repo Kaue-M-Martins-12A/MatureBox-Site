@@ -8,19 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Leciane-Silva12A/MatureBox-Site.git"
+    "url": "git+https://github.com/Kaue-M-Martins-12A/MatureBox-Site.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-=======
   "type": "commonjs",
->>>>>>> 29c0d882789bb2d903a4a3417d1e14995da6cc0e
+
   "bugs": {
-    "url": "https://github.com/Leciane-Silva12A/MatureBox-Site/issues"
+    "url": "https://github.com/Kaue-M-Martins-12A/MatureBox-Site/issues"
   },
-  "homepage": "https://github.com/Leciane-Silva12A/MatureBox-Site#readme",
+  "homepage": "https://github.com/Kaue-M-Martins-12A/MatureBox-Site#readme",
   "dependencies": {
     "express": "^5.2.1"
   }
