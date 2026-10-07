@@ -128,11 +128,33 @@ body {
   transform: scale(1);
 }
 
+/* NAVEGAÇÃO / HEADER CORRIGIDO */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background-color: rgba(3, 3, 13, 0.95);
+  border-bottom: 1px solid #1a1b3a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: #ffffff;
+}
+
+/* CORREÇÃO DO LOGO: Força texto branco sem fundo roxo ou borda */
+.logo a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none;
 }
 
 .nav-links {
@@ -148,14 +170,18 @@ body {
   letter-spacing: 0.5px;
   transition: color 0.2s;
   text-transform: uppercase;
+  background: transparent;
+  border: none;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover {
   color: #ffffff;
 }
 
+/* CORREÇÃO DO LINK ATIVO: Apenas barra inferior sem caixas roxas em volta */
 .nav-links a.active {
-  border-bottom: 2px solid #ffffff;
+  color: #ffffff;
+  border-bottom: 2px solid var(--accent-purple);
   padding-bottom: 4px;
 }
 
@@ -192,12 +218,11 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  transition: background 0.2s, transform 0.1s;
+  transition: background 0.2s;
 }
 
 .btn-primary:hover {
   background: #4338ca;
-  transform: translateY(-1px);
 }
 
 /* LAYOUT PRINCIPAL */
