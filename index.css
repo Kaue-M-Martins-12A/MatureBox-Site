@@ -635,3 +635,115 @@ body.claro .newsletter-form input {
     padding: 2rem 1.5rem;
   }
 }
+
+@media (max-width: 640px) {
+
+  /* HERO */
+  .hero-section-grid {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-card {
+    padding: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+
+  .hero-description {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* BOTÕES DO HERO */
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .btn-solid-blue,
+  .btn-outline-blue {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* IMAGEM DO CHEF */
+  .hero-chef-avatar {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    align-self: center;
+    margin-top: 1rem;
+  }
+
+  .hero-chef-avatar img {
+    height: 120px;
+    max-width: 100%;
+  }
+
+  /* TELEMETRIA */
+  .telemetry-card {
+    padding: 1.25rem;
+  }
+
+  .telemetry-item {
+    padding: 1rem;
+  }
+
+  .telemetry-value {
+    font-size: 1.5rem;
+  }
+
+  /* SEÇÕES */
+  .accessible-engineering {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header.center {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .section-description {
+    font-size: 0.8rem;
+  }
+
+  /* CARDS */
+  .feature-card {
+    padding: 1.25rem;
+  }
+
+  /* ARQUITETURA */
+  .system-architecture {
+    gap: 1.5rem;
+  }
+
+  .chamber-mockup img {
+    max-width: 220px;
+  }
+
+  .arch-title {
+    font-size: 1.4rem;
+  }
+
+  /* NEWSLETTER */
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  /* RODAPÉ */
+  .footer {
+    gap: 1.5rem;
+  }
+}

@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!navbar) return;
 
-
-
+    /* Botão do menu */
     const botao = document.createElement("div");
 
     botao.className = "menu-hamburguer";
@@ -16,26 +15,24 @@ document.addEventListener("DOMContentLoaded", function () {
         <span></span>
     `;
 
-
-
+    /* Menu */
     const menu = document.createElement("nav");
 
     menu.className = "menu-mobile";
 
     menu.innerHTML = `
-        <a href="./index.html">Início</a>
-        <a href="./instrucoes.html">Instruções</a>
-        <a href="./producao.html">Produção</a>
-        <a href="./sobrenos.html">Sobre Nós</a>
-        <a href="./referencia.html">Referências</a>
-        <a href="./jogo.html">Jogar</a>
+        <a href="./index.html">INÍCIO</a>
+        <a href="./instrucoes.html">INSTRUÇÕES</a>
+        <a href="./producao.html">PRODUÇÃO</a>
+        <a href="./sobrenos.html">SOBRE NÓS</a>
+        <a href="./referencia.html">REFERÊNCIAS</a>
+        <a href="./jogo.html">JOGO</a>
     `;
-
 
     navbar.appendChild(botao);
     navbar.appendChild(menu);
 
-
+    /* Abrir / fechar */
     botao.addEventListener("click", function () {
 
         botao.classList.toggle("ativo");
