@@ -30,6 +30,20 @@ body {
   color: #ffffff;
 }
 
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none;
+}
+
 .nav-links {
   display: flex;
   gap: 2rem;
