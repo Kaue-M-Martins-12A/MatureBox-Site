@@ -1,4 +1,3 @@
-/* RESET BÁSICO E VARIÁVEIS */
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +9,8 @@
   --bg-main: #03030d;
   --bg-card: #0f1026;
   --bg-card-border: #1f2142;
+  --navbar-bg: rgba(3, 3, 13, 0.95);
+  --footer-bg: #020208;
   --accent-purple: #5850ec;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -18,22 +19,37 @@
   --badge-orange: #fb923c;
 }
 
+/* MODO CLARO */
+body.claro {
+  --bg-main: #FFFFFF;
+  --bg-card: #BCB7D5;
+  --bg-card-border: #a09cc2;
+  --navbar-bg: #BCB7D5;
+  --footer-bg: #BCB7D5;
+  --accent-purple: #3333E2;
+  --text-main: #151528;
+  --text-muted: #444455;
+  --badge-purple: #3333E2;
+  --badge-blue: #2563eb;
+  --badge-orange: #d97706;
+}
+
 body {
   background-color: var(--bg-main);
   color: var(--text-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* NAVEGAÇÃO / HEADER */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 4rem;
-  background-color: rgba(3, 3, 13, 0.95);
-  border-bottom: 1px solid #1a1b3a;
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid var(--bg-card-border);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -44,21 +60,18 @@ body {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: #ffffff;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
 }
 
 .logo a {
-  color: #ffffff !important;
+  color: var(--text-main) !important;
   text-decoration: none !important;
   background: transparent !important;
   border: none !important;
   outline: none;
+}
+
+body.claro .logo a {
+  color: #3333E2 !important;
 }
 
 .nav-links {
@@ -77,11 +90,11 @@ body {
 }
 
 .nav-links a:hover, .nav-links a.active {
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 .nav-links a.active {
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 2px solid var(--accent-purple);
   padding-bottom: 4px;
 }
 
@@ -91,42 +104,17 @@ body {
   gap: 1rem;
 }
 
-.icon-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  border-radius: 50%;
-  transition: color 0.2s, background 0.2s;
-}
-
-.icon-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
-}
-
 .btn-primary {
   background: var(--accent-purple);
-  color: white;
+  color: white !important;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  transition: background 0.2s, transform 0.1s;
 }
 
-.btn-primary:hover {
-  background: #4338ca;
-  transform: translateY(-1px);
-}
-
-/* CONTAINER PRINCIPAL */
 .container {
   max-width: 1120px;
   margin: 0 auto;
@@ -134,7 +122,6 @@ body {
   width: 100%;
 }
 
-/* HERO SECTION */
 .hero-section {
   text-align: left;
   max-width: 720px;
@@ -146,7 +133,7 @@ body {
   font-weight: 800;
   margin-bottom: 1rem;
   letter-spacing: -0.5px;
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 .hero-description {
@@ -155,7 +142,6 @@ body {
   line-height: 1.6;
 }
 
-/* GRID TOTALMENTE ALINHADA */
 .references-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -164,7 +150,6 @@ body {
   align-items: stretch;
 }
 
-/* CARDS DE REFERÊNCIA */
 .ref-card {
   background: var(--bg-card);
   border: 1px solid var(--bg-card-border);
@@ -174,12 +159,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.ref-card:hover {
-  border-color: #3b3e7a;
-  transform: translateY(-2px);
 }
 
 .card-content {
@@ -187,29 +166,11 @@ body {
   flex-direction: column;
 }
 
-/* POSICIONAMENTO ESPECÍFICO DOS CARDS NO GRID */
-.card-main {
-  grid-column: 1;
-  grid-row: 1;
-}
+.card-main { grid-column: 1; grid-row: 1; }
+.card-side { grid-column: 2; grid-row: 1; }
+.card-stat { grid-column: 1; grid-row: 2; justify-content: center; }
+.card-microbiology { grid-column: 2; grid-row: 2; }
 
-.card-side {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.card-stat {
-  grid-column: 1;
-  grid-row: 2;
-  justify-content: center;
-}
-
-.card-microbiology {
-  grid-column: 2;
-  grid-row: 2;
-}
-
-/* BADGES (TAGS SUPERIORES) */
 .card-badge {
   display: inline-flex;
   align-items: center;
@@ -223,23 +184,17 @@ body {
 .card-badge.purple { color: var(--badge-purple); }
 .card-badge.blue { color: var(--badge-blue); }
 .card-badge.orange { color: var(--badge-orange); }
-.card-badge.blue-light { color: #818cf8; }
+.card-badge.blue-light { color: var(--accent-purple); }
 
-/* TÍTULOS E TEXTOS */
 .card-title {
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-main);
   line-height: 1.35;
   margin-bottom: 0.85rem;
 }
 
-.card-title.lg {
-  font-size: 1.35rem;
-}
-
-.card-title.md {
-  font-size: 1.1rem;
-}
+.card-title.lg { font-size: 1.35rem; }
+.card-title.md { font-size: 1.1rem; }
 
 .card-text {
   color: var(--text-muted);
@@ -253,7 +208,6 @@ body {
   color: var(--text-muted);
 }
 
-/* ESTILOS DO CARD DE ESTATÍSTICA (CARD 3) */
 .stat-container {
   display: flex;
   align-items: center;
@@ -262,27 +216,16 @@ body {
   gap: 1.5rem;
 }
 
-.stat-info {
-  display: flex;
-  flex-direction: column;
-}
+.stat-info { display: flex; flex-direction: column; }
 
 .stat-value {
   font-size: 2.25rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--text-main);
   margin: 0.1rem 0 0.5rem 0;
   letter-spacing: -1px;
 }
 
-.stat-graphic {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-/* RODAPÉ DO CARD E LINKS ALINHADOS ABAIXO */
 .card-footer {
   display: flex;
   justify-content: space-between;
@@ -291,112 +234,57 @@ body {
   padding-top: 0.75rem;
 }
 
-.card-footer.right-align {
-  justify-content: flex-end;
-}
-
 .mono-text {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  color: #64748b;
-}
-
-.font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
 }
 
 .card-link {
-  color: #818cf8;
+  color: var(--accent-purple);
   text-decoration: underline;
   font-size: 0.75rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.2s;
 }
 
-.card-link:hover {
-  color: #a5b4fc;
-}
-
-.card-link.simple {
-  text-decoration: none;
-}
-
-.card-link.bold {
-  font-weight: 700;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-}
-
-/* RODAPÉ DA PÁGINA */
 .footer {
   margin-top: auto;
-  border-top: 1px solid #1a1b3a;
+  border-top: 1px solid var(--bg-card-border);
   padding: 2.5rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #020208;
+  background: var(--footer-bg);
 }
 
 .footer-brand p {
-  color: #475569;
+  color: var(--text-muted);
   font-size: 0.75rem;
   margin-top: 0.4rem;
 }
 
-.footer-links {
-  display: flex;
-  gap: 1.5rem;
-}
+.footer-links { display: flex; gap: 1.5rem; }
 
 .footer-links a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.75rem;
-  transition: color 0.2s;
 }
 
-.footer-links a:hover {
-  color: #fff;
-}
+.footer-links a:hover { color: var(--text-main); }
 
-/* RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS */
 @media (max-width: 868px) {
-  .references-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-
-  .card-main,
-  .card-side,
-  .card-stat,
-  .card-microbiology {
-    grid-column: auto;
-    grid-row: auto;
-  }
+  .references-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .card-main, .card-side, .card-stat, .card-microbiology { grid-column: auto; grid-row: auto; }
 }
 
 @media (max-width: 640px) {
-  .navbar {
-    padding: 1rem 1.5rem;
-  }
-  .nav-links {
-    display: none;
-  }
-  .container {
-    padding: 2rem 1rem;
-  }
-  .stat-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .footer {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 2rem 1.5rem;
-  }
+  .navbar { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .container { padding: 2rem 1rem; }
+  .stat-container { flex-direction: column; align-items: flex-start; }
+  .footer { flex-direction: column; gap: 1rem; align-items: flex-start; padding: 2rem 1.5rem; }
 }

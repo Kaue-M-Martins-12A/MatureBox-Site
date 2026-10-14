@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar {
@@ -23,17 +24,17 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: #ffffff;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.5px;
+  color: #ffffff;
 }
 
 .logo a {
@@ -67,35 +68,17 @@ body {
   border-bottom: 2px solid #ffffff;
   padding-bottom: 4px;
 }
-.theme-toggle {
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 10px;
-}
 
-.btn-get-started {
-  background-color: #3b42f6;
-  color: #ffffff !important;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-weight: 700 !important;
-  transition: background-color 0.3s !important;
-}
-
-.btn-get-started:hover {
-  background-color: #2a30d8;
-}
-
+/* CONTAINER DE FUNDO (PREENCHE TODO O ESPAÇO DA TELA) */
 .hero-container {
   flex: 1;
+  width: 100%;
+  max-width: 100% !important;
+  margin: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  
   background-image: url('./imagem/fundologin.png'); 
   background-size: cover;
   background-position: center;
@@ -299,15 +282,121 @@ body {
 }
 
 .btn-primary {
-  background-color: #4338ca;
-  color: white;
+  background-color: #3333E2;
+  color: white !important;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  transition: background 0.2s, transform 0.1s;
+}
+
+/* =========================
+   MODO CLARO (LOGIN)
+========================= */
+body.claro {
+  background-color: #ffffff;
+  color: #151528;
+}
+
+body.claro .navbar {
+  background-color: #BCB7D5;
+  border-bottom: 1px solid #a09cc2;
+}
+
+body.claro .logo a {
+  color: #3333E2 !important;
+}
+
+body.claro .nav-links a {
+  color: #444455;
+}
+
+body.claro .nav-links a:hover,
+body.claro .nav-links a.active {
+  color: #151528;
+  border-bottom-color: #3333E2;
+}
+
+body.claro .hero-container {
+  background-image: linear-gradient(rgba(188, 183, 213, 0.75), rgba(188, 183, 213, 0.75)), url('./imagem/fundologin.png');
+  background-size: cover;
+  background-position: center;
+  background-color: #BCB7D5;
+}
+
+body.claro .hero-card {
+  background: rgba(188, 183, 213, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+body.claro .welcome-section h1 {
+  color: #151528;
+}
+
+body.claro .welcome-section p {
+  color: #2a2a3d;
+}
+
+body.claro .login-section {
+  background: rgba(255, 255, 255, 0.22);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.claro .login-section h2 {
+  color: #151528;
+}
+
+body.claro .input-group label {
+  color: #151528;
+}
+
+body.claro .input-group input {
+  background: rgba(135, 128, 180, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #151528;
+}
+
+body.claro .input-group input::placeholder {
+  color: #555577;
+}
+
+body.claro .input-group input:focus {
+  border-color: #3333E2;
+  background: rgba(135, 128, 180, 0.7);
+}
+
+body.claro .forgot-link a {
+  color: #151528;
+}
+
+body.claro .btn-submit {
+  background-color: #1c0066;
+  color: #ffffff;
+}
+
+body.claro .btn-submit:hover {
+  background-color: #2b0099;
+}
+
+body.claro .footer {
+  background-color: #BCB7D5;
+  border-top: 1px solid #a09cc2;
+}
+
+body.claro .footer-logo {
+  color: #3333E2;
+}
+
+body.claro .footer-info p,
+body.claro .footer-links a {
+  color: #444455;
+}
+
+body.claro .footer-links a:hover {
+  color: #151528;
 }
 
 @media (max-width: 768px) {
@@ -325,7 +414,7 @@ body {
   .navbar {
     padding: 0 20px;
   }
-  .nav-links a:not(.btn-get-started) {
+  .nav-links a {
     display: none;
   }
 }

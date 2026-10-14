@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MatureBox - Jogo: Chefe Guardião</title>
-  <link rel="stylesheet" href="jogo.css">
-  <script src="index.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="jogo.css">
   <link rel="stylesheet" href="menu.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <script src="index.js" defer></script>
   <script src="menu.js" defer></script>
 </head>
@@ -26,8 +25,18 @@
       <a href="./jogo.html" class="active">JOGO</a>
     </nav>
     <div class="header-actions">
-      <button id="theme-toggle" class="icon-btn" aria-label="Alternar tema">
-        <!-- Ícone injetado dinamicamente via JS -->
+      <button id="theme-toggle" class="icon-btn theme-toggle-btn" aria-label="Alternar tema">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
       </button>
       <a href="./login.html" class="btn-primary">GET STARTED</a>
     </div>

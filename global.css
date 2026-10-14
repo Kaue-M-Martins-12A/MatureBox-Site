@@ -115,47 +115,69 @@ main {
     }
 }
 
-/* Botão Alternar Tema (Lua / Sol) */
+/* =========================
+   RESET E ANIMAÇÃO DO BOTÃO DE TEMA
+========================= */
+
+#theme-toggle,
+.theme-toggle-btn,
 .theme-toggle {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background-color: transparent;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
     cursor: pointer;
     position: relative;
-    display: flex;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    .icon {
-        position: absolute;
-        font-size: 20px;
-        transition: transform 0.5s ease, opacity 0.3s ease;
-    }
-
-    .lua {
-        opacity: 1;
-        transform: rotate(0deg) scale(1);
-    }
-
-    .sol {
-        opacity: 0;
-        transform: rotate(180deg) scale(0);
-    }
+    padding: 0;
+    color: var(--texto-claro, #ffffff);
+    border-radius: 50%;
+    transition: background-color 0.2s ease, color 0.3s ease;
 }
 
-body.claro {
-    .theme-toggle {
-        .lua {
-            opacity: 0;
-            transform: rotate(-180deg) scale(0);
-        }
-        .sol {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-    }
+body.claro #theme-toggle,
+body.claro .theme-toggle-btn {
+    color: var(--texto-claro, #222222);
+}
+
+#theme-toggle:hover,
+.theme-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.claro #theme-toggle:hover,
+body.claro .theme-toggle-btn:hover {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+#theme-toggle .icon,
+.theme-toggle-btn .icon {
+    position: absolute;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+/* Modo Escuro: Exibe a Lua */
+body:not(.claro) .lua {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+body:not(.claro) .sol {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+}
+
+/* Modo Claro: Exibe o Sol */
+body.claro .lua {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+body.claro .sol {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
 }
 
 /* =========================
@@ -246,7 +268,7 @@ body.claro {
         }
     }
 
-        .navbar {
+    .navbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -290,12 +312,10 @@ body.claro {
         }
     }
 
-        .navbar .logo,
+    .navbar .logo,
     .navbar .logo a,
     .navbar > a:first-child {
         color: #ffffff !important;
         text-decoration: none;
     }
-
-    
 }
