@@ -299,6 +299,18 @@ body {
   color: #ffffff;
 }
 
+.btn-primary {
+  background-color: #4338ca;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.1s;
+}
+
 @media (max-width: 768px) {
   .hero-card {
     flex-direction: column;
