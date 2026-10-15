@@ -3,227 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MatureBox - Produção & O Projeto Final</title>
+  <title>MatureBox - Produção e projeto final</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/producao.css">
-  <link rel="stylesheet" href="css/menu.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script src="js/index.js" defer></script>
+  <script src="js/tema.js"></script>
   <script src="js/menu.js" defer></script>
   <script src="js/producao.js" defer></script>
 </head>
 <body>
 
   <header class="navbar">
-    <div class="logo"> <a href="./index.html">MatureBox</a> </div>
-    <nav class="nav-links">
-      <a href="./instrucoes.html">INSTRUÇÕES</a>
-      <a href="./producao.html" class="active">PRODUÇÃO</a>
-      <a href="./sobrenos.html">SOBRE NÓS</a>
-      <a href="./referencia.html">REFERÊNCIAS</a>
-      <a href="./jogo.html">JOGO</a>
+    <div class="logo"><a href="./index.html">MatureBox</a></div>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="./instrucoes.html">Instruções</a>
+      <a href="./producao.html" class="active" aria-current="page">Produção</a>
+      <a href="./sobrenos.html">Sobre nós</a>
+      <a href="./referencia.html">Referências</a>
+      <a href="./jogo.html">Jogo</a>
     </nav>
     <div class="header-actions">
-      <button id="theme-toggle" class="icon-btn theme-toggle-btn" aria-label="Alternar tema">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button type="button" class="theme-toggle-btn" aria-label="Alternar entre tema claro e escuro">
+        <svg class="sol" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+        <svg class="lua" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
-      <a href="./login.html" class="btn-primary">GET STARTED</a>
+      <a href="./login.html" class="btn btn-ambar btn-primary">Entrar</a>
     </div>
   </header>
 
-  <main class="container">
+  <main>
 
-    <section class="hero-project">
-      <div class="hero-text">
-        <h1 class="hero-title">O Projeto Final</h1>
-        <p class="hero-description">
-          A MatureBox é a culminação de precisão em IoT e ciência de alimentos. Uma câmara de maturação controlada projetada para resultados consistentes e profissionais, construída com componentes acessíveis e montagem modular.
+    <section class="hero-projeto">
+      <div class="hero-texto">
+        <h1>O projeto final</h1>
+        <p class="lead">
+          O MatureBox é a culminação de precisão em IoT e ciência de alimentos. Uma câmara de maturação controlada projetada para resultados consistentes e profissionais, construída com componentes acessíveis e montagem modular.
         </p>
-        <div class="hero-buttons">
-          <a href="#" class="btn-solid">INICIAR MONTAGEM</a>
-          <a href="#" class="btn-outline">VER CÓDIGO</a>
+        <div class="hero-ctas">
+          <a href="./instrucoes.html" class="btn btn-painel">Iniciar montagem</a>
+          <a href="https://github.com/Kaue-M-Martins-12A/MatureBox-Site" class="btn btn-contorno" target="_blank" rel="noopener noreferrer">Ver código</a>
         </div>
       </div>
 
-      <div class="hero-image-container">
-        <img src="./imagem/componentes.png"
-          alt="Componentes do Projeto MatureBox"
-          class="hero-image"
-          id="imagemComponentes">
-      </div>
+      <button type="button" class="chapa hero-imagem" id="imagemComponentes" aria-label="Ampliar imagem dos componentes">
+        <img src="./imagem/componentes.png" alt="Componentes do MatureBox numerados sobre a bancada, ao lado da câmara">
+        <span class="ampliar">Clique para ampliar</span>
+      </button>
     </section>
 
-    <section class="bom-section">
-      <div class="bom-header">
-        <h2 class="bom-title">Lista de Componentes (BOM)</h2>
+    <section class="bom">
+      <div class="secao-topo">
+        <h2>Lista de componentes (BOM)</h2>
       </div>
 
-      <div class="bom-grid">
+      <div class="bom-layout">
+        <ul class="componentes">
 
-        <div class="component-card">
-          <div class="card-top">
-            <div class="component-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                <rect x="9" y="9" width="6" height="6"></rect>
-                <line x1="9" y1="1" x2="9" y2="4"></line>
-                <line x1="15" y1="1" x2="15" y2="4"></line>
-                <line x1="9" y1="20" x2="9" y2="23"></line>
-                <line x1="15" y1="20" x2="15" y2="23"></line>
-                <line x1="20" y1="9" x2="23" y2="9"></line>
-                <line x1="20" y1="15" x2="23" y2="15"></line>
-                <line x1="1" y1="9" x2="4" y2="9"></line>
-                <line x1="1" y1="15" x2="4" y2="15"></line>
-              </svg>
+          <li class="componente">
+            <div class="tecla" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path></svg>
             </div>
-            <span class="price-tag">R$ 150,00</span>
-          </div>
-          <h3 class="component-name">Microcontrolador ESP32</h3>
-          <p class="component-desc">
-            O cérebro da operação. Responsável pela leitura dos sensores, controle dos relés e comunicação Wi-Fi para telemetria.
-          </p>
-        </div>
-
-        <div class="component-card">
-          <div class="card-top">
-            <div class="component-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path>
-              </svg>
+            <div class="componente-texto">
+              <h3>Microcontrolador ESP32</h3>
+              <p>O cérebro da operação. Responsável pela leitura dos sensores, controle dos relés e comunicação Wi-Fi para telemetria.</p>
             </div>
-            <span class="price-tag">R$ 45,00</span>
-          </div>
-          <h3 class="component-name">Sensor DHT22</h3>
-          <p class="component-desc">
-            Sensor de precisão para temperatura e umidade relativa do ar. Crucial para manter o ambiente de maturação estável.
-          </p>
-        </div>
+            <span class="preco">R$ 150,00</span>
+          </li>
 
-        <div class="component-card">
-          <div class="card-top">
-            <div class="component-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-              </svg>
+          <li class="componente">
+            <div class="tecla" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
             </div>
-            <span class="price-tag">R$ 38,00</span>
-          </div>
-          <h3 class="component-name">Módulo Relé 4 Canais</h3>
-          <p class="component-desc">
-            Atuadores de estado sólido para ligar e desligar o compressor da geladeira, umidificador, exaustor e resistência de aquecimento.
-          </p>
-        </div>
-
-        <div class="component-card">
-          <div class="card-top">
-            <div class="component-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2v10"></path>
-                <path d="M18.4 6.6a9 9 0 1 1-12.8 0"></path>
-              </svg>
+            <div class="componente-texto">
+              <h3>Sensor DHT22</h3>
+              <p>Sensor de precisão para temperatura e umidade relativa do ar. Crucial para manter o ambiente de maturação estável.</p>
             </div>
-            <span class="price-tag">R$ 60,00</span>
-          </div>
-          <h3 class="component-name">Fonte de Alimentação 5V/12V</h3>
-          <p class="component-desc">
-            Fornece energia estabilizada para a placa controladora, sensores e pequenos atuadores como ventoinhas.
-          </p>
-        </div>
+            <span class="preco">R$ 45,00</span>
+          </li>
 
-        <div class="component-card">
-          <div class="card-top">
-            <div class="component-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path>
-              </svg>
+          <li class="componente">
+            <div class="tecla" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
             </div>
-            <span class="price-tag">R$ 90,00</span>
-          </div>
-          <h3 class="component-name">Umidificador Ultrassônico</h3>
-          <p class="component-desc">
-            Módulo gerador de névoa para elevar a umidade interna sem gerar calor residual. Essencial para cura de queijos e embutidos.
-          </p>
-        </div>
-
-        <div class="component-card">
-          <div class="card-top">
-            <div class="component-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 2a10 10 0 0 0 0 20a10 10 0 0 0 0-20"></path>
-                <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0"></path>
-              </svg>
+            <div class="componente-texto">
+              <h3>Módulo relé 4 canais</h3>
+              <p>Liga e desliga o compressor da geladeira, o umidificador, o exaustor e a resistência de aquecimento.</p>
             </div>
-            <span class="price-tag">R$ 40,00</span>
-          </div>
-          <h3 class="component-name">Ventoinhas de Exaustão (x2)</h3>
-          <p class="component-desc">
-            Coolers de 120mm para renovação de ar e circulação interna, evitando pontos de estagnação e proliferação de fungos indesejados.
-          </p>
-        </div>
+            <span class="preco">R$ 38,00</span>
+          </li>
 
-        <div class="summary-card">
-          <div class="summary-header">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-            <h3>Resumo de Custos Estimados</h3>
-          </div>
-
-          <div class="summary-rows">
-            <div class="summary-row">
-              <span>Eletrônica Base</span>
-              <span class="row-price">R$ 285,00</span>
+          <li class="componente">
+            <div class="tecla" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v10"></path><path d="M18.4 6.6a9 9 0 1 1-12.8 0"></path></svg>
             </div>
-            <div class="summary-row">
-              <span>Atuadores Climatização</span>
-              <span class="row-price">R$ 120,00</span>
+            <div class="componente-texto">
+              <h3>Fonte de alimentação 5V/12V</h3>
+              <p>Fornece energia estabilizada para a placa controladora, sensores e pequenos atuadores como ventoinhas.</p>
             </div>
-            <div class="summary-row">
-              <span>Estrutura Física</span>
-              <span class="row-price">R$ 150,00</span>
+            <span class="preco">R$ 60,00</span>
+          </li>
+
+          <li class="componente">
+            <div class="tecla" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path></svg>
             </div>
-          </div>
+            <div class="componente-texto">
+              <h3>Umidificador ultrassônico</h3>
+              <p>Módulo gerador de névoa para elevar a umidade interna sem gerar calor residual. Essencial para cura de queijos e embutidos.</p>
+            </div>
+            <span class="preco">R$ 90,00</span>
+          </li>
 
-          <div class="summary-total">
-            <span>Custo Total Aproximado</span>
-            <span class="total-price">R$ 555,00</span>
-          </div>
-        </div>
+          <li class="componente">
+            <div class="tecla" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 9V2M14.6 13.5l6 3.5M9.4 13.5l-6 3.5"></path></svg>
+            </div>
+            <div class="componente-texto">
+              <h3>Ventoinhas de exaustão (x2)</h3>
+              <p>Coolers de 120 mm para renovação de ar e circulação interna, evitando pontos de estagnação e proliferação de fungos indesejados.</p>
+            </div>
+            <span class="preco">R$ 40,00</span>
+          </li>
 
+        </ul>
+
+        <aside class="painel parafusos resumo">
+          <h3>Resumo de custos estimados</h3>
+
+          <dl class="resumo-linhas">
+            <div><dt>Eletrônica base</dt><dd>R$ 293,00</dd></div>
+            <div><dt>Atuadores de climatização</dt><dd>R$ 130,00</dd></div>
+            <div><dt>Estrutura física</dt><dd>R$ 150,00</dd></div>
+          </dl>
+
+          <div class="resumo-total">
+            <p class="painel-rotulo">Custo total aproximado</p>
+            <div class="lcd total">R$ 573,00</div>
+          </div>
+        </aside>
       </div>
     </section>
 
   </main>
 
   <footer class="footer">
-    <div class="footer-brand">
-      <div class="logo">MatureBox</div>
-      <p>© 2026 MatureBox. Precision Maturation Technologies.</p>
-    </div>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Technical Support</a>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><a href="./index.html">MatureBox</a></div>
+        <p>© 2026 MatureBox. Tecnologia de maturação de precisão.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Rodapé">
+        <a href="#">Contato</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de uso</a>
+        <a href="#">Suporte técnico</a>
+      </nav>
     </div>
   </footer>
 
-  <div id="imagemAmpliada" class="imagem-ampliada">
-    <button id="fecharImagem" class="fechar-imagem">&times;</button>
-    <img src="./imagem/componentes.png" alt="Componentes do Projeto MatureBox">
+  <div id="imagemAmpliada" class="imagem-ampliada" role="dialog" aria-modal="true" aria-label="Componentes do MatureBox ampliados">
+    <button type="button" id="fecharImagem" class="fechar-imagem" aria-label="Fechar">&times;</button>
+    <img src="./imagem/componentes.png" alt="Componentes do MatureBox numerados sobre a bancada, ao lado da câmara">
   </div>
 
 </body>

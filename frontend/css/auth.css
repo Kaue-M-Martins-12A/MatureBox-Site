@@ -1,0 +1,128 @@
+/* Login e cadastro */
+
+.auth {
+  justify-content: center;
+  flex: 1;
+}
+
+.auth-caixa {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.auth-boas-vindas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 48px 40px;
+}
+
+.auth-boas-vindas h1 {
+  color: var(--ambar);
+}
+
+.auth-boas-vindas p {
+  color: var(--painel-suave);
+  max-width: 40ch;
+}
+
+.auth-form-area {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--chapa-borda);
+  border-radius: 4px;
+  background: var(--fundo);
+  color: var(--texto);
+  font: inherit;
+}
+
+.campo input::placeholder {
+  color: var(--texto-suave);
+  opacity: 0.7;
+}
+
+.campo input:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 1px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 13px 20px;
+}
+
+.auth-troca {
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.auth-troca a {
+  font-weight: 600;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--chapa-borda);
+}
+
+.social-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--chapa-borda);
+  border-radius: 50%;
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.social-btn:hover {
+  border-color: var(--texto);
+}
+
+@media (max-width: 760px) {
+  .auth-caixa {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .auth-boas-vindas,
+  .auth-form-area {
+    padding: 32px 22px;
+  }
+}

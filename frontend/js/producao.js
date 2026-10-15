@@ -6,17 +6,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!imagem || !imagemAmpliada || !fechar) return;
 
-    imagem.addEventListener("click", function () {
+    function abrir() {
         imagemAmpliada.classList.add("ativo");
-    });
+        fechar.focus();
+    }
 
-    fechar.addEventListener("click", function () {
+    function fecharAmpliada() {
         imagemAmpliada.classList.remove("ativo");
-    });
+        imagem.focus();
+    }
+
+    imagem.addEventListener("click", abrir);
+
+    fechar.addEventListener("click", fecharAmpliada);
 
     imagemAmpliada.addEventListener("click", function (event) {
         if (event.target === imagemAmpliada) {
-            imagemAmpliada.classList.remove("ativo");
+            fecharAmpliada();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && imagemAmpliada.classList.contains("ativo")) {
+            fecharAmpliada();
         }
     });
 
