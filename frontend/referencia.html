@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatureBox - Referências científicas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/referencia.css">
+  <script src="js/tema.js"></script>
+  <script src="js/menu.js" defer></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo"><a href="./index.html">MatureBox</a></div>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="./instrucoes.html">Instruções</a>
+      <a href="./producao.html">Produção</a>
+      <a href="./sobrenos.html">Sobre nós</a>
+      <a href="./referencia.html" class="active" aria-current="page">Referências</a>
+      <a href="./jogo.html">Jogo</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle-btn" aria-label="Alternar entre tema claro e escuro">
+        <svg class="sol" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+        <svg class="lua" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a href="./login.html" class="btn btn-ambar btn-primary">Entrar</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="intro">
+      <h1>Referências científicas</h1>
+      <p class="lead">
+        O desenvolvimento do MatureBox é fundamentado em pesquisas rigorosas em ciência dos alimentos, termodinâmica e IoT. Abaixo, detalhamos o embasamento teórico que garante a precisão do nosso sistema de maturação.
+      </p>
+    </section>
+
+    <section class="referencias">
+
+      <article class="chapa ref ref-principal">
+        <p class="categoria">Publicação principal</p>
+        <h2 class="ref-titulo">Termodinâmica aplicada à maturação a seco: controle de umidade relativa em ambientes confinados</h2>
+        <p class="ref-texto">
+          Estudo detalhado sobre o impacto das flutuações de umidade relativa na atividade de água (Aw) superficial em proteínas, estabelecendo os parâmetros ótimos de 75-85% UR utilizados no algoritmo do MatureBox.
+        </p>
+        <div class="ref-rodape">
+          <cite>Journal of Food Engineering, Vol. 245, 2023</cite>
+          <a href="#" class="ref-link">Ler artigo</a>
+        </div>
+      </article>
+
+      <article class="chapa ref">
+        <p class="categoria">IoT e sensores</p>
+        <h3 class="ref-titulo">Calibração de sensores de ponto de orvalho em microclimas</h3>
+        <p class="ref-texto">
+          Metodologia para minimizar o drift em sensores capacitivos operando em temperaturas próximas a 0°C.
+        </p>
+        <div class="ref-rodape">
+          <a href="#" class="ref-link">Acessar</a>
+        </div>
+      </article>
+
+      <article class="painel parafusos ref ref-medida">
+        <p class="painel-rotulo">Precisão comprovada</p>
+        <div class="lcd medida">2.0°C</div>
+        <p class="ref-texto">
+          Desvio padrão térmico validado independentemente por laboratórios parceiros, garantindo segurança microbiológica.
+        </p>
+      </article>
+
+      <article class="chapa ref ref-larga">
+        <p class="categoria">Microbiologia</p>
+        <h3 class="ref-titulo">Dinâmica populacional de culturas fúngicas nobres</h3>
+        <p class="ref-texto">
+          Análise do desenvolvimento de cepas de Thamnidium sob ventilação laminar forçada, embasando o design do sistema de circulação de ar do MatureBox.
+        </p>
+        <div class="ref-rodape">
+          <cite>Food Microbiology Letters, 2022</cite>
+          <a href="https://share.google/2F4Fuv6nuUnwMxI7a" target="_blank" rel="noopener noreferrer" class="ref-link">Baixar PDF</a>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><a href="./index.html">MatureBox</a></div>
+        <p>© 2026 MatureBox. Tecnologia de maturação de precisão.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Rodapé">
+        <a href="#">Contato</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de uso</a>
+        <a href="#">Suporte técnico</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

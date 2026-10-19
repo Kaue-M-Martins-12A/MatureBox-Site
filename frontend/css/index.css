@@ -1,0 +1,141 @@
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.hero-painel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* O visor é o elemento principal da página */
+.lcd-grande {
+  padding: 22px 24px;
+  font-size: clamp(2.2rem, 4.6vw, 3.2rem);
+  line-height: 1.2;
+}
+
+.lcd-grande span {
+  display: inline-block;
+  width: 3.4em;
+  font-size: 0.42em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+  vertical-align: 0.5em;
+}
+
+/* =========================
+   ENGENHARIA ACESSÍVEL
+========================= */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 24px 28px;
+}
+
+.feature p {
+  color: var(--texto-suave);
+}
+
+/* =========================
+   ARQUITETURA DO SISTEMA
+========================= */
+
+.arquitetura {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.arquitetura-imagem img {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.arquitetura-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.arquitetura-texto > p {
+  color: var(--texto-suave);
+  max-width: 58ch;
+}
+
+/* Lista de peças com marcador de LED */
+.arch-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid var(--chapa-borda);
+}
+
+.arch-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--chapa-borda);
+  font-weight: 500;
+}
+
+.arch-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--led-ok);
+  box-shadow: 0 0 6px var(--led-ok);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+  .hero,
+  .arquitetura {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .features-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

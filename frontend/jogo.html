@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatureBox - Jogo: Chefe Guardião</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/jogo.css">
+  <script src="js/tema.js"></script>
+  <script src="js/menu.js" defer></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo"><a href="./index.html">MatureBox</a></div>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="./instrucoes.html">Instruções</a>
+      <a href="./producao.html">Produção</a>
+      <a href="./sobrenos.html">Sobre nós</a>
+      <a href="./referencia.html">Referências</a>
+      <a href="./jogo.html" class="active" aria-current="page">Jogo</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle-btn" aria-label="Alternar entre tema claro e escuro">
+        <svg class="sol" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+        <svg class="lua" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a href="./login.html" class="btn btn-ambar btn-primary">Entrar</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero-jogo">
+      <div class="painel parafusos tela-chefe">
+        <img src="./imagem/chefe.png" alt="O Chefe Guardião segurando uma frigideira e um batedor">
+      </div>
+
+      <div class="hero-texto">
+        <h1>Chefe Guardião da Receita</h1>
+        <p class="lead">
+          Você é o chef que criou a receita perfeita usando o maturador automatizado.
+          Agora, sua missão é proteger sua invenção contra vilões que querem roubar a fórmula secreta.
+        </p>
+        <div>
+          <a href="https://gd.games/games/f0a2a9e4-41e4-42c9-a2e2-e4cc03942f5b" target="_blank" rel="noopener noreferrer" class="btn btn-painel btn-jogar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+              <path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"></path>
+            </svg>
+            Jogar agora
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="secao-topo">
+        <h2>Inimigos</h2>
+      </div>
+
+      <div class="inimigos">
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/plankton.png" alt="Plankton genérico"></div>
+          <h3>Plankton genérico</h3>
+          <p>Vilão pequeno e astuto que tenta invadir o sistema.</p>
+        </article>
+
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/hacker.png" alt="Hackers da receita"></div>
+          <h3>Hackers da receita</h3>
+          <p>Inimigos que tentam invadir o aplicativo e roubar dados.</p>
+        </article>
+
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/sabotador.png" alt="Sabotador da fábrica"></div>
+          <h3>Sabotador da fábrica</h3>
+          <p>Personagem que mexe nos sensores para estragar o processo.</p>
+        </article>
+
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/mercador.png" alt="Mercadores corruptos"></div>
+          <h3>Mercadores corruptos</h3>
+          <p>Vilões que querem vender a receita falsa no site.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="secao-topo">
+        <h2>Mecânicas</h2>
+        <p>Estilo beat 'em up: o chef anda pelo laboratório e enfrenta os vilões com utensílios de cozinha. Cada fase representa uma tentativa de roubo:</p>
+      </div>
+
+      <ol class="fases">
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE 1</div>
+          <h3>Proteger os sensores</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/sensor.png" alt="Sensor">
+          </div>
+        </li>
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE 2</div>
+          <h3>Defender o microcontrolador</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/microcontrolador.png" alt="Microcontrolador">
+          </div>
+        </li>
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE 3</div>
+          <h3>Impedir invasão no aplicativo</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/aplicativo.png" alt="Aplicativo">
+          </div>
+        </li>
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE FINAL</div>
+          <h3>Derrotar o vilão chefe</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/vilão.png" alt="Vilão chefe">
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="integracao">
+      <div class="integracao-texto">
+        <h2>Integração com o projeto</h2>
+        <p>O jogo mostra de forma lúdica que o sistema precisa ser protegido contra falhas e invasões.</p>
+        <ul class="integracao-lista">
+          <li>Cada vitória do chef simboliza o controle correto de temperatura, umidade e tempo.</li>
+          <li>O final mostra o alimento pronto e a receita protegida, conectando com a parte de otimização e comercialização.</li>
+        </ul>
+      </div>
+
+      <div class="integracao-img">
+        <img src="./imagem/receita.png" alt="Receita protegida e o alimento pronto">
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><a href="./index.html">MatureBox</a></div>
+        <p>© 2026 MatureBox. Tecnologia de maturação de precisão.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Rodapé">
+        <a href="#">Contato</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de uso</a>
+        <a href="#">Suporte técnico</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

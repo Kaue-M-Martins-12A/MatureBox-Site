@@ -1,0 +1,220 @@
+/* =========================
+   HERO
+========================= */
+
+.hero-jogo {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 56px;
+  align-items: center;
+}
+
+/* O chef aparece numa "tela" do painel */
+.tela-chefe {
+  padding: 28px 24px 0;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 176, 32, 0.16), transparent 62%),
+    var(--painel);
+}
+
+.tela-chefe img {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.hero-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.btn-jogar {
+  padding: 14px 26px;
+  font-size: 1.2rem;
+}
+
+/* =========================
+   INIMIGOS
+========================= */
+
+.inimigos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.inimigo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 12px 22px;
+}
+
+.inimigo-img {
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 4px;
+  background: var(--painel);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.inimigo-img img {
+  max-height: 92%;
+  object-fit: contain;
+}
+
+.inimigo h3,
+.inimigo p {
+  padding: 0 8px;
+}
+
+.inimigo p {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+/* =========================
+   FASES (sequência real)
+========================= */
+
+.fases {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.fase {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+}
+
+/* Conector entre fases */
+.fase:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 36px;
+  right: -28px;
+  width: 28px;
+  height: 2px;
+  background: var(--ambar);
+}
+
+.fase-num {
+  padding: 6px 12px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.fase h3 {
+  min-height: 2.3em;
+}
+
+.fase-img {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+}
+
+.fase-img img {
+  height: 92px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* =========================
+   INTEGRAÇÃO
+========================= */
+
+.integracao {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.integracao-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.integracao-texto > p {
+  color: var(--texto-suave);
+  max-width: 60ch;
+}
+
+.integracao-lista {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--chapa-borda);
+}
+
+.integracao-lista li {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--chapa-borda);
+}
+
+.integracao-lista li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-top: 0.6em;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--led-ok);
+  box-shadow: 0 0 6px var(--led-ok);
+}
+
+.integracao-img img {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 960px) {
+  .inimigos,
+  .fases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fase:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-jogo,
+  .integracao {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .tela-chefe img {
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inimigos,
+  .fases {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

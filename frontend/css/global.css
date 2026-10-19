@@ -1,0 +1,671 @@
+/* =========================================================
+   MATUREBOX — IDENTIDADE "PAINEL DE INSTRUMENTO"
+   O site é tratado como o próprio aparelho: chapas de inox,
+   painéis grafite, visor LCD âmbar e LEDs de status.
+   ========================================================= */
+
+/* ---------- Tema claro: inox ---------- */
+:root {
+  --fundo: #D5D9DC;
+  --fundo-veio: #CDD1D4;
+  --chapa: #E6E9EB;
+  --chapa-borda: #B4BAC0;
+  --texto: #1F2327;
+  --texto-suave: #4E565D;
+  --destaque: #8A5800;        /* âmbar escurecido: texto de destaque sobre inox */
+  --parafuso: #98A0A6;
+
+  --painel: #23272B;          /* painéis do aparelho (cabeçalho, rodapé, visores) */
+  --painel-borda: #3A4046;
+  --painel-texto: #D3D7DA;
+  --painel-suave: #9AA3AA;
+
+  --ambar: #FFB020;
+  --lcd-fundo: #2A1D04;
+  --led-ok: #2FBF71;
+  --led-alerta: #E0402F;
+  --led-apagado: #5A2A24;
+  --foco: #B06F00;
+
+  --f-titulo: "Saira Condensed", "Arial Narrow", sans-serif;
+  --f-texto: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-lcd: "Share Tech Mono", "Consolas", monospace;
+
+  --raio: 6px;
+  --largura: 1140px;
+  color-scheme: light;
+}
+
+/* ---------- Tema escuro: painel noturno ---------- */
+:root[data-theme="dark"] {
+  --fundo: #16191C;
+  --fundo-veio: #181B1E;
+  --chapa: #1F2327;
+  --chapa-borda: #31373D;
+  --texto: #DDE1E4;
+  --texto-suave: #9AA3AA;
+  --destaque: #FFB020;
+  --parafuso: #3E454B;
+
+  --painel: #0E1012;
+  --painel-borda: #2A2F34;
+  --painel-texto: #D3D7DA;
+  --painel-suave: #848D94;
+
+  --led-apagado: #4A2420;
+  --foco: #FFB020;
+  color-scheme: dark;
+}
+
+/* Sem JavaScript, segue a preferência do sistema */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --fundo: #16191C;
+    --fundo-veio: #181B1E;
+    --chapa: #1F2327;
+    --chapa-borda: #31373D;
+    --texto: #DDE1E4;
+    --texto-suave: #9AA3AA;
+    --destaque: #FFB020;
+    --parafuso: #3E454B;
+    --painel: #0E1012;
+    --painel-borda: #2A2F34;
+    --painel-texto: #D3D7DA;
+    --painel-suave: #848D94;
+    --led-apagado: #4A2420;
+    --foco: #FFB020;
+    color-scheme: dark;
+  }
+}
+
+/* =========================
+   BASE
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--f-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--texto);
+  background-color: var(--fundo);
+  /* veio de inox escovado */
+  background-image: repeating-linear-gradient(90deg, transparent 0 2px, var(--fundo-veio) 2px 3px, transparent 3px 5px);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3, h4, p, ul {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--f-titulo);
+  text-wrap: balance;
+  color: var(--texto);
+}
+
+/* Títulos gravados em caixa alta, como letreiro de painel */
+h1 {
+  font-size: clamp(2.5rem, 5.5vw, 3.9rem);
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+a {
+  color: var(--destaque);
+}
+
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+main {
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--texto-suave);
+  max-width: 62ch;
+}
+
+/* Cabeçalho de seção: título + texto, alinhados à esquerda */
+.secao-topo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+  max-width: 64ch;
+}
+
+.secao-topo p {
+  color: var(--texto-suave);
+}
+
+/* =========================
+   CABEÇALHO (painel do aparelho)
+========================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 40px;
+  background: var(--painel);
+  border-bottom: 1px solid var(--painel-borda);
+  color: var(--painel-texto);
+}
+
+.logo a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-titulo);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--painel-texto);
+  text-decoration: none;
+}
+
+/* LED de "aparelho ligado" ao lado da marca */
+.logo a::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--led-ok);
+  box-shadow: 0 0 8px var(--led-ok);
+}
+
+.nav-links {
+  display: flex;
+  gap: 26px;
+  margin-right: auto;
+}
+
+.nav-links a,
+.menu-mobile a {
+  font-family: var(--f-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--painel-suave);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.menu-mobile a:hover {
+  color: var(--painel-texto);
+}
+
+.nav-links a.active,
+.menu-mobile a.active {
+  color: var(--ambar);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.theme-toggle-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--painel-borda);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--painel-texto);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--ambar);
+  color: var(--ambar);
+}
+
+.theme-toggle-btn svg {
+  position: absolute;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+}
+
+/* Tema claro mostra a lua (para ir ao escuro); escuro mostra o sol */
+.theme-toggle-btn .sol { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+.theme-toggle-btn .lua { opacity: 1; transform: none; }
+:root[data-theme="dark"] .theme-toggle-btn .sol { opacity: 1; transform: none; }
+:root[data-theme="dark"] .theme-toggle-btn .lua { opacity: 0; transform: rotate(90deg) scale(0.4); }
+
+/* =========================
+   BOTÕES
+========================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border: 1.5px solid transparent;
+  border-radius: 4px;
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* Tecla de painel: grafite com legenda âmbar */
+.btn-painel {
+  background: var(--painel);
+  border-color: var(--painel-borda);
+  color: var(--ambar);
+}
+
+.btn-painel:hover {
+  background: var(--painel-borda);
+  border-color: var(--painel-borda);
+}
+
+.btn-contorno {
+  background: transparent;
+  border-color: var(--texto);
+  color: var(--texto);
+}
+
+.btn-contorno:hover {
+  background: var(--texto);
+  color: var(--fundo);
+}
+
+/* Botão âmbar, usado sobre o painel escuro do cabeçalho */
+.btn-ambar {
+  background: var(--ambar);
+  border-color: var(--ambar);
+  color: #23272B;
+}
+
+.btn-ambar:hover {
+  background: #FFC54D;
+  border-color: #FFC54D;
+}
+
+.btn-primary {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   CHAPAS, PAINÉIS, VISOR E LEDS
+========================= */
+
+/* Chapa: superfície de inox levantada */
+.chapa {
+  background: var(--chapa);
+  border: 1px solid var(--chapa-borda);
+  border-radius: var(--raio);
+}
+
+/* Painel grafite com parafusos nos cantos */
+.painel {
+  position: relative;
+  background: var(--painel);
+  color: var(--painel-texto);
+  border: 1px solid var(--painel-borda);
+  border-radius: 8px;
+  padding: 26px 24px 22px;
+}
+
+.parafusos::before,
+.parafusos::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--parafuso);
+  box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.parafusos::before { left: 9px; }
+.parafusos::after { right: 9px; }
+
+.painel h2,
+.painel h3 {
+  color: var(--painel-texto);
+}
+
+.painel-rotulo {
+  font-family: var(--f-titulo);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--painel-suave);
+}
+
+/* Visor LCD âmbar com luz de fundo */
+.lcd {
+  background: var(--lcd-fundo);
+  border: 2px solid #0A0C0E;
+  border-radius: 4px;
+  padding: 14px 18px;
+  font-family: var(--f-lcd);
+  color: var(--ambar);
+  text-shadow: 0 0 7px rgba(255, 176, 32, 0.5);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.45;
+}
+
+.leds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-family: var(--f-titulo);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--painel-suave);
+}
+
+.led::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--led-apagado);
+}
+
+.led.ligado::before {
+  background: var(--led-ok);
+  box-shadow: 0 0 7px var(--led-ok);
+}
+
+/* Ícone em tecla grafite */
+.tecla {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--painel);
+  color: var(--ambar);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Rótulo só para leitores de tela */
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Imagens que trocam conforme o tema */
+.so-escuro { display: none; }
+:root[data-theme="dark"] .so-escuro { display: block; }
+:root[data-theme="dark"] .so-claro { display: none; }
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.footer {
+  margin-top: auto;
+  background: var(--painel);
+  border-top: 1px solid var(--painel-borda);
+  color: var(--painel-suave);
+}
+
+.footer-inner {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 44px 24px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.4fr;
+  gap: 32px;
+}
+
+.footer .logo a {
+  font-size: 1.3rem;
+}
+
+.footer-brand p {
+  margin-top: 10px;
+  font-size: 0.875rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col a {
+  color: var(--painel-suave);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-col a:hover {
+  color: var(--painel-texto);
+}
+
+.footer-heading {
+  font-family: var(--f-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--painel-texto);
+}
+
+.newsletter-col p {
+  font-size: 0.9rem;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--painel-borda);
+  border-radius: 4px;
+  background: var(--lcd-fundo);
+  color: var(--ambar);
+  font-family: var(--f-lcd);
+  font-size: 0.95rem;
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 176, 32, 0.5);
+}
+
+/* =========================
+   MENSAGENS DOS FORMULÁRIOS
+========================= */
+
+.form-message {
+  min-height: 1.4em;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-message.erro { color: var(--led-alerta); }
+.form-message.sucesso { color: var(--led-ok); }
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   MENU MOBILE (criado pelo menu.js)
+========================= */
+
+.menu-hamburguer,
+.menu-mobile {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .navbar {
+    padding: 12px 20px;
+    gap: 16px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  .header-actions .btn-primary {
+    display: none;
+  }
+
+  .menu-hamburguer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 40px;
+    padding: 11px 9px;
+    border: 1px solid var(--painel-borda);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--painel-texto);
+    cursor: pointer;
+  }
+
+  .menu-hamburguer span {
+    display: block;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .menu-hamburguer.ativo span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-hamburguer.ativo span:nth-child(2) { opacity: 0; }
+  .menu-hamburguer.ativo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .menu-mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    padding: 8px 0 16px;
+    background: var(--painel);
+    border-bottom: 1px solid var(--painel-borda);
+  }
+
+  .menu-mobile.ativo {
+    display: flex;
+  }
+
+  .menu-mobile a {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  main {
+    padding: 36px 16px 64px;
+    gap: 64px;
+  }
+
+  .footer-inner {
+    padding: 36px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

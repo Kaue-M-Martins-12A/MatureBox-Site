@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatureBox - Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <script src="js/tema.js"></script>
+  <script src="js/menu.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/login.js" defer></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo"><a href="./index.html">MatureBox</a></div>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="./instrucoes.html">Instruções</a>
+      <a href="./producao.html">Produção</a>
+      <a href="./sobrenos.html">Sobre nós</a>
+      <a href="./referencia.html">Referências</a>
+      <a href="./jogo.html">Jogo</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle-btn" aria-label="Alternar entre tema claro e escuro">
+        <svg class="sol" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+        <svg class="lua" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a href="./login.html" class="btn btn-ambar btn-primary">Entrar</a>
+    </div>
+  </header>
+
+  <main class="auth">
+    <div class="auth-caixa">
+
+      <section class="painel parafusos auth-boas-vindas">
+        <h1>Bem-vindo!</h1>
+        <p>
+          Faça agora o login e pare de perder tempo com processos manuais. É grátis, é rápido e você já começa a aproveitar tudo o que nossa plataforma tem a oferecer no mesmo minuto.
+        </p>
+      </section>
+
+      <section class="chapa auth-form-area">
+        <h2>Login</h2>
+        <form class="auth-form" id="login-form" novalidate>
+
+          <div class="campo">
+            <label for="username">Nome do usuário</label>
+            <input type="text" id="username" autocomplete="username" placeholder="Digite aqui...">
+          </div>
+
+          <div class="campo">
+            <label for="password">Senha</label>
+            <input type="password" id="password" autocomplete="current-password" placeholder="Digite aqui...">
+          </div>
+
+          <p id="form-message" class="form-message" aria-live="polite"></p>
+
+          <button type="submit" class="btn btn-painel btn-submit">Entrar</button>
+
+          <p class="auth-troca">Não tem conta? <a href="./cadastro.html">Criar conta</a></p>
+
+          <div class="social-login">
+            <a href="#" class="social-btn" aria-label="Entrar com Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+            <a href="#" class="social-btn" aria-label="Entrar com Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social-btn" aria-label="Entrar com Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          </div>
+
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><a href="./index.html">MatureBox</a></div>
+        <p>© 2026 MatureBox. Tecnologia de maturação de precisão.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Rodapé">
+        <a href="#">Contato</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de uso</a>
+        <a href="#">Suporte técnico</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 820px;
+}
+
+/* Grade: principal ocupa 2 colunas; medida + larga na linha de baixo */
+.referencias {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ref {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 26px;
+}
+
+.ref-principal,
+.ref-larga {
+  grid-column: span 2;
+}
+
+.categoria {
+  font-family: var(--f-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--destaque);
+}
+
+.ref-titulo {
+  max-width: 34ch;
+}
+
+/* O título da publicação principal é maior, mas sem a caixa alta das seções */
+h2.ref-titulo {
+  font-size: clamp(1.6rem, 2.6vw, 2.05rem);
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.ref-texto {
+  color: var(--texto-suave);
+  max-width: 62ch;
+}
+
+.ref-rodape {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--chapa-borda);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+}
+
+.ref-rodape cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.ref-link {
+  margin-left: auto;
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--destaque);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Medida em visor */
+.ref-medida .ref-texto {
+  color: var(--painel-suave);
+}
+
+.lcd.medida {
+  font-size: clamp(2.6rem, 5vw, 3.4rem);
+  line-height: 1.1;
+}
+
+@media (max-width: 900px) {
+  .referencias {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ref-principal,
+  .ref-larga {
+    grid-column: auto;
+  }
+}
