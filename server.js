@@ -15,12 +15,12 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "index.html"));
 });
 
-// Executa app.listen apenas quando estiver rodando localmente
-if (process.env.NODE_ENV !== "production") {
-  app.listen(3333, () => {
-    console.log("Servidor online em http://localhost:3333");
-  });
-}
+// Porta dinâmica para o Railway (process.env.PORT) ou 3333 para testes locais
+const PORT = process.env.PORT || 3333;
 
-// Exporta o app para a Vercel entender como Serverless Function
+// No Railway, o servidor precisa rodar o app.listen SEMPRE
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
+
 export default app;
