@@ -34,14 +34,14 @@
 .auth-form-area {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 40px;
+  gap: 20px;
+  padding: 36px 40px;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .campo {
@@ -63,6 +63,7 @@
   background: var(--fundo);
   color: var(--texto);
   font: inherit;
+  transition: border-color 0.2s, outline 0.2s;
 }
 
 .campo input::placeholder {
@@ -78,6 +79,7 @@
 .btn-submit {
   width: 100%;
   padding: 13px 20px;
+  margin-top: 4px;
 }
 
 .auth-troca {
@@ -94,7 +96,7 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  padding-top: 18px;
+  padding-top: 16px;
   border-top: 1px solid var(--chapa-borda);
 }
 
@@ -123,6 +125,6 @@
 
   .auth-boas-vindas,
   .auth-form-area {
-    padding: 32px 22px;
+    padding: 28px 20px;
   }
 }
