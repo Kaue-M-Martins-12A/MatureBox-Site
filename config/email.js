@@ -1,25 +1,13 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // Força SSL direto na porta 465 (evita o bloqueio da porta 587 no Railway)
-  family: 4,    // Força IPv4
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function enviarEmailVerificacao(emailDestino, token) {
   const urlBase = process.env.URL_BASE || "http://localhost:3333";
   const linkVerificacao = `${urlBase}/api/verificar?token=${token}`;
 
-  const mailOptions = {
-    from: `"MatureBox" <${process.env.EMAIL_USER}>`,
+  return resend.emails.send({
+    from: "MatureBox <onboarding@resend.dev>",
     to: emailDestino,
     subject: "Ative a sua conta no MatureBox",
     html: `
@@ -34,7 +22,5 @@ export async function enviarEmailVerificacao(emailDestino, token) {
         <p style="font-size: 0.85em; color: #666;">Se não solicitou este registo, pode ignorar este e-mail.</p>
       </div>
     `
-  };
-
-  return transporter.sendMail(mailOptions);
+  });
 }
