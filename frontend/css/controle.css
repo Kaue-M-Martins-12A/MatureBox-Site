@@ -1,0 +1,317 @@
+/* =========================
+   TOPO
+========================= */
+
+.controle-topo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.controle-topo-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.status-conexao {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.status-conexao .leds {
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* LED vermelho quando o alerta estiver ativo */
+.led.alerta::before {
+  background: var(--led-alerta);
+  box-shadow: 0 0 7px var(--led-alerta);
+}
+
+.led.offline::before {
+  background: var(--led-apagado);
+  box-shadow: none;
+}
+
+.status-nota {
+  font-size: 0.875rem;
+  color: var(--painel-suave);
+}
+
+/* =========================
+   LEITURAS
+========================= */
+
+.leituras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.leitura {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lcd-leitura {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: clamp(2.4rem, 4.4vw, 3.4rem);
+  line-height: 1.1;
+}
+
+.lcd-leitura small {
+  font-size: 0.45em;
+  opacity: 0.85;
+}
+
+.lcd-hora {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  padding-block: 20px;
+}
+
+.leitura-alvo {
+  font-size: 0.9rem;
+  color: var(--painel-suave);
+}
+
+.leitura-alvo span {
+  font-family: var(--f-lcd);
+  color: var(--painel-texto);
+}
+
+/* =========================
+   AJUSTES + ATUADORES
+========================= */
+
+.controle-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.ajustes-caixa {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 26px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label,
+.campo-rotulo {
+  font-family: var(--f-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.entrada {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--painel-borda);
+  border-radius: 4px;
+  background: var(--lcd-fundo);
+  color: var(--ambar);
+  font-family: var(--f-lcd);
+  font-size: 1rem;
+}
+
+.ajuste {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 52px;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.ajuste-btn {
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.ajuste-valor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1.6rem;
+  padding-block: 8px;
+}
+
+/* Seletor Automático / Manual */
+.modo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1.5px solid var(--painel-borda);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--painel);
+}
+
+.modo-btn {
+  padding: 11px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--painel-suave);
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.modo-btn:hover {
+  color: var(--painel-texto);
+}
+
+.modo-btn.ativo {
+  background: var(--ambar);
+  color: #23272B;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Parada de emergência: contorno vermelho */
+#btn-parada {
+  border-color: var(--led-alerta);
+  color: var(--led-alerta);
+}
+
+#btn-parada:hover {
+  background: var(--led-alerta);
+  color: #fff;
+}
+
+/* =========================
+   ATUADORES
+========================= */
+
+.rele-lista {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--chapa);
+  border: 1px solid var(--chapa-borda);
+  border-radius: var(--raio);
+}
+
+.rele {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 22px;
+}
+
+.rele + .rele {
+  border-top: 1px solid var(--chapa-borda);
+}
+
+.rele-texto p {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+/* Chave liga/desliga */
+.chave {
+  position: relative;
+  width: 58px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--painel-borda);
+  border-radius: 999px;
+  background: var(--painel);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.chave span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--painel-suave);
+  transition: transform 0.25s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.chave[aria-checked="true"] span {
+  transform: translateX(28px);
+  background: var(--led-ok);
+  box-shadow: 0 0 8px var(--led-ok);
+}
+
+.chave:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================
+   REGISTRO
+========================= */
+
+.registro {
+  height: 220px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  padding: 16px 18px;
+}
+
+.registro div {
+  white-space: pre-wrap;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+  .controle-topo,
+  .controle-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .leituras {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .ajustes-caixa {
+    padding: 22px 16px;
+  }
+
+  .rele {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .acoes .btn {
+    width: 100%;
+  }
+}
