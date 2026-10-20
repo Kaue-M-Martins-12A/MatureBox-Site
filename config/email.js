@@ -6,8 +6,8 @@ export async function enviarEmailVerificacao(emailDestino, token) {
   const urlBase = process.env.URL_BASE || "http://localhost:3333";
   const linkVerificacao = `${urlBase}/api/verificar?token=${token}`;
 
-  return resend.emails.send({
-    from: "MatureBox <onboarding@resend.dev>",
+  const { data, error } = await resend.emails.send({
+    from: "MatureBox <nao-responda@matureboxinc.com.br>", // Novo remetente com seu domínio próprio!
     to: emailDestino,
     subject: "Ative a sua conta no MatureBox",
     html: `
@@ -23,4 +23,11 @@ export async function enviarEmailVerificacao(emailDestino, token) {
       </div>
     `
   });
+
+  if (error) {
+    console.error("Erro no envio do Resend:", error);
+    throw new Error(error.message);
+  }
+
+  return data;
 }
