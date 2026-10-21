@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MatureBox - Guia de inicialização</title>
+  <title>MatureBox - Jogo: Chefe Guardião</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Saira+Condensed:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/instrucoes.css">
+  <link rel="stylesheet" href="css/jogo.css">
   <script src="js/tema.js"></script>
   <script src="js/menu.js" defer></script>
 </head>
@@ -17,14 +17,12 @@
   <header class="navbar">
     <div class="logo"><a href="./index.html">MatureBox</a></div>
     <nav class="nav-links" aria-label="Principal">
-      <a href="./instrucoes.html" class="active" aria-current="page">Instruções</a>
+      <a href="./instrucoes.html">Instruções</a>
       <a href="./producao.html">Produção</a>
       <a href="./sobrenos.html">Sobre nós</a>
       <a href="./referencia.html">Referências</a>
-      <a href="./jogo.html">Jogo</a>
+      <a href="./jogo.html" class="active" aria-current="page">Jogo</a>
       <a href="./controle.html">Controle</a>
-      <link rel="stylesheet" href="css/chat.css">
-      <script src="js/chat.js" defer></script>
     </nav>
     <div class="header-actions">
       <!-- Botão de Tema -->
@@ -120,70 +118,116 @@
 
   <main>
 
-    <section class="intro">
-      <h1>Guia de inicialização do MatureBox</h1>
-      <p class="lead">
-        Siga os passos técnicos precisos para configurar seu ambiente de maturação. Cada etapa é crucial para garantir a estabilidade do ecossistema IoT e a qualidade final do produto.
-      </p>
-    </section>
+    <section class="hero-jogo">
+      <div class="painel parafusos tela-chefe">
+        <img src="./imagem/chefe.png" alt="O Chefe Guardião segurando uma frigideira e um batedor">
+      </div>
 
-    <section class="chapa fluxograma" aria-label="Fluxo de uso do MatureBox em cinco etapas">
-      <img class="so-claro" src="./imagem/instrucaoclarofoto.png" alt="Fluxo de uso em cinco etapas: entrar no aplicativo, escolher o alimento e o tipo de maturação, receber o aviso, aguardar o ciclo e receber o alerta de conclusão">
-      <img class="so-escuro" src="./imagem/instrucaofoto.png" alt="Fluxo de uso em cinco etapas: entrar no aplicativo, escolher o alimento e o tipo de maturação, receber o aviso, aguardar o ciclo e receber o alerta de conclusão">
+      <div class="hero-texto">
+        <h1>Chefe Guardião da Receita</h1>
+        <p class="lead">
+          Você é o chef que criou a receita perfeita usando o maturador automatizado.
+          Agora, sua missão é proteger sua invenção contra vilões que querem roubar a fórmula secreta.
+        </p>
+        <div>
+          <a href="https://gd.games/games/f0a2a9e4-41e4-42c9-a2e2-e4cc03942f5b" target="_blank" rel="noopener noreferrer" class="btn btn-painel btn-jogar">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect>
+              <path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"></path>
+            </svg>
+            Jogar agora
+          </a>
+        </div>
+      </div>
     </section>
 
     <section>
       <div class="secao-topo">
-        <h2>Antes de começar</h2>
-        <p>Assista a este guia visual completo antes de iniciar o processo físico. O vídeo detalha a calibração inicial dos sensores e o pareamento com a rede.</p>
+        <h2>Inimigos</h2>
       </div>
 
-      <ol class="passos">
-        <li class="passo">
-          <span class="passo-num" aria-hidden="true">01</span>
-          <div class="passo-corpo">
-            <h3>Energização</h3>
-            <p>Conecte o dispositivo a uma fonte de energia ininterrupta. Aguarde o ciclo de boot do sistema central. O LED indicador frontal piscará em azul elétrico durante a inicialização.</p>
+      <div class="inimigos">
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/plankton.png" alt="Plankton genérico"></div>
+          <h3>Plankton genérico</h3>
+          <p>Vilão pequeno e astuto que tenta invadir o sistema.</p>
+        </article>
+
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/hacker.png" alt="Hackers da receita"></div>
+          <h3>Hackers da receita</h3>
+          <p>Inimigos que tentam invadir o aplicativo e roubar dados.</p>
+        </article>
+
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/sabotador.png" alt="Sabotador da fábrica"></div>
+          <h3>Sabotador da fábrica</h3>
+          <p>Personagem que mexe nos sensores para estragar o processo.</p>
+        </article>
+
+        <article class="chapa inimigo">
+          <div class="inimigo-img"><img src="./imagem/mercador.png" alt="Mercadores corruptos"></div>
+          <h3>Mercadores corruptos</h3>
+          <p>Vilões que querem vender a receita falsa no site.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="secao-topo">
+        <h2>Mecânicas</h2>
+        <p>Estilo beat 'em up: o chef anda pelo laboratório e enfrenta os vilões com utensílios de cozinha. Cada fase representa uma tentativa de roubo:</p>
+      </div>
+
+      <ol class="fases">
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE 1</div>
+          <h3>Proteger os sensores</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/sensor.png" alt="Sensor">
           </div>
         </li>
-
-        <li class="passo">
-          <span class="passo-num" aria-hidden="true">02</span>
-          <div class="passo-corpo">
-            <h3>Conectividade IoT</h3>
-            <p>Acesse o painel web local via IP padrão. Configure os parâmetros da sua rede Wi-Fi para permitir o envio contínuo de telemetria dos sensores para a nuvem.</p>
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE 2</div>
+          <h3>Defender o microcontrolador</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/microcontrolador.png" alt="Microcontrolador">
           </div>
         </li>
-
-        <li class="passo">
-          <span class="passo-num" aria-hidden="true">03</span>
-          <div class="passo-corpo">
-            <h3>Calibração térmica</h3>
-            <p>Execute a rotina de autocalibração no aplicativo. O sistema estabilizará a temperatura interna e validará a precisão dos sensores antes do uso.</p>
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE 3</div>
+          <h3>Impedir invasão no aplicativo</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/aplicativo.png" alt="Aplicativo">
           </div>
         </li>
-
-        <li class="passo">
-          <span class="passo-num" aria-hidden="true">04</span>
-          <div class="passo-corpo">
-            <h3>Inoculação e setup</h3>
-            <p>Com o ambiente estabilizado, insira o produto alvo. Selecione o perfil de maturação correspondente no painel de controle. O sistema ajustará a umidade relativa e o fluxo de ar automaticamente com base no algoritmo preditivo.</p>
-            <div class="lcd terminal" role="status">
-              <div>&gt; STATUS: AGUARDANDO PRODUTO</div>
-              <div>&gt; UMIDADE ALVO: 85%</div>
-              <div>&gt; TEMPERATURA: 2.5°C</div>
-            </div>
-          </div>
-        </li>
-
-        <li class="passo">
-          <span class="passo-num" aria-hidden="true">05</span>
-          <div class="passo-corpo">
-            <h3>Monitoramento</h3>
-            <p>O processo iniciou. Utilize a aba "Dashboard" para visualizar os gráficos em tempo real. Alertas serão emitidos caso haja desvio dos parâmetros ideais.</p>
+        <li class="painel fase">
+          <div class="lcd fase-num">FASE FINAL</div>
+          <h3>Derrotar o vilão chefe</h3>
+          <div class="fase-img">
+            <img src="./imagem/minichefe.png" alt="">
+            <img src="./imagem/vilão.png" alt="Vilão chefe">
           </div>
         </li>
       </ol>
+    </section>
+
+    <section class="integracao">
+      <div class="integracao-texto">
+        <h2>Integração com o projeto</h2>
+        <p>O jogo mostra de forma lúdica que o sistema precisa ser protegido contra falhas e invasões.</p>
+        <ul class="integracao-lista">
+          <li>Cada vitória do chef simboliza o controle correto de temperatura, umidade e tempo.</li>
+          <li>O final mostra o alimento pronto e a receita protegida, conectando com a parte de otimização e comercialização.</li>
+        </ul>
+      </div>
+
+      <div class="integracao-img">
+        <img src="./imagem/receita.png" alt="Receita protegida e o alimento pronto">
+      </div>
     </section>
 
   </main>
