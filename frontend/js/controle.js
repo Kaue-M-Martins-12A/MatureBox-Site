@@ -44,6 +44,21 @@ document.addEventListener("DOMContentLoaded", () => {
         cofreErro.textContent = "";
         cofreStatusTexto.textContent = "DESBLOQUEANDO...";
         
+        // Salva o dispositivo pareado no localStorage
+        localStorage.setItem("maturebox_codigo", codigoDigitado);
+        localStorage.setItem("maturebox_pareado", codigoDigitado);
+
+        const dadosUsuario = JSON.parse(localStorage.getItem("dados_usuario")) || {};
+        dadosUsuario.dispositivo_id = codigoDigitado;
+        localStorage.setItem("dados_usuario", JSON.stringify(dadosUsuario));
+
+        // Atualiza a interface do perfil no header imediatamente
+        if (typeof window.carregarDadosPerfil === "function") {
+          window.carregarDadosPerfil();
+        } else if (typeof window.atualizarStatusPareamento === "function") {
+          window.atualizarStatusPareamento(codigoDigitado);
+        }
+
         // Gira o volante 720 graus (duas voltas completas)
         cofreVolante.style.transform = "rotate(720deg)";
 

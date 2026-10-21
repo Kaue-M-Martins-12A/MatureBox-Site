@@ -85,14 +85,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (perfilContainer) perfilContainer.style.display = "none";
   }
 
+  /* Função para mascarar o código (Oculta os primeiros dígitos e mantém apenas os 2 últimos) */
+  function mascararCodigoMatureBox(codigo) {
+    if (!codigo) return "";
+    const str = String(codigo).trim();
+    if (str.length <= 2) return str;
+    return "*".repeat(str.length - 2) + str.slice(-2);
+  }
+
   /* Carregar Dados do Utilizador */
   function carregarDadosPerfil() {
+    const dispositivoSalvo = localStorage.getItem("maturebox_codigo") || localStorage.getItem("maturebox_pareado");
     const dadosSalvos = JSON.parse(localStorage.getItem("dados_usuario")) || {
       nome: "Usuário MatureBox",
-      email: usuarioLogado.includes("@") ? usuarioLogado : "cliente@maturebox.com.br",
+      email: usuarioLogado && usuarioLogado.includes("@") ? usuarioLogado : "cliente@maturebox.com.br",
       foto: null,
-      dispositivo_id: localStorage.getItem("maturebox_pareado") || null
+      dispositivo_id: dispositivoSalvo || null
     };
+
+    if (dispositivoSalvo) {
+      dadosSalvos.dispositivo_id = dispositivoSalvo;
+    }
 
     if (usuarioNome) usuarioNome.textContent = dadosSalvos.nome;
     if (usuarioEmail) usuarioEmail.textContent = dadosSalvos.email;
@@ -105,11 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
     atualizarStatusPareamento(dadosSalvos.dispositivo_id);
   }
 
-  /* Atualizar Estado de Conexão do Dispositivo */
+  /* Atualizar Estado de Conexão do Dispositivo com Mascaramento (ex: MB-*******77) */
   function atualizarStatusPareamento(dispositivoId) {
     if (dispositivoId) {
+      const codigoMascarado = mascararCodigoMatureBox(dispositivoId);
       if (statusPareamentoTxt) {
-        statusPareamentoTxt.textContent = `● MatureBox #${dispositivoId}`;
+        statusPareamentoTxt.textContent = `MB-${codigoMascarado}`;
         statusPareamentoTxt.className = "status-pareamento-txt conectado";
       }
       if (badgeStatusLed) badgeStatusLed.className = "led-status-dot online";
@@ -125,6 +139,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (btnDesconectarBox) btnDesconectarBox.style.display = "none";
     }
   }
+
+  // Torna acessível globalmente para chamadas de outros scripts
+  window.carregarDadosPerfil = carregarDadosPerfil;
+  window.atualizarStatusPareamento = atualizarStatusPareamento;
 
   /* Abrir / Fechar Menu do Perfil */
   if (btnPerfilToggle) {
@@ -162,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Edição de Nome In-App (Sem prompt do navegador) */
+  /* Edição de Nome In-App */
   if (btnEditarNome) {
     btnEditarNome.addEventListener("click", () => {
       if (nomeExibicao) nomeExibicao.style.display = "none";
@@ -199,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Redirecionamento Direto para o Cofre do Controle (Sem prompt do navegador) */
+  /* Redirecionamento Direto para o Cofre do Controle */
   if (btnConectarBox) {
     btnConectarBox.addEventListener("click", () => {
       if (perfilMenu) perfilMenu.classList.remove("ativo");
@@ -213,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Confirmação de Desconexão In-App (Sem confirm do navegador) */
+  /* Confirmação de Desconexão In-App */
   if (btnDesconectarBox) {
     btnDesconectarBox.addEventListener("click", () => {
       btnDesconectarBox.style.display = "none";
@@ -223,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fecharConfirmacaoDesconexao() {
     if (boxConfirmarDesconexao) boxConfirmarDesconexao.style.display = "none";
-    const temDispositivo = localStorage.getItem("maturebox_pareado");
+    const temDispositivo = localStorage.getItem("maturebox_codigo") || localStorage.getItem("maturebox_pareado");
     if (temDispositivo && btnDesconectarBox) {
       btnDesconectarBox.style.display = "block";
     }
@@ -234,6 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnConfirmarSim) {
     btnConfirmarSim.addEventListener("click", () => {
       localStorage.removeItem("maturebox_pareado");
+      localStorage.removeItem("maturebox_codigo");
       sessionStorage.removeItem("cofre_desbloqueado");
 
       const dados = JSON.parse(localStorage.getItem("dados_usuario")) || {};
