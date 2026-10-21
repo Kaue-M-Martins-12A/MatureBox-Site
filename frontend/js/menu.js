@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const linksOriginais = document.querySelector(".nav-links");
 
   if (navbar && linksOriginais) {
-    /* Botão do menu hambúrguer */
     const botao = document.createElement("button");
     botao.type = "button";
     botao.className = "menu-hamburguer";
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <span></span>
     `;
 
-    /* Menu mobile: junta as hiperligações originais */
     const menu = document.createElement("nav");
     menu.className = "menu-mobile";
     menu.setAttribute("aria-label", "Menu");
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     navbar.appendChild(botao);
     navbar.appendChild(menu);
 
-    /* Abrir / fechar menu mobile */
     botao.addEventListener("click", () => {
       const aberto = menu.classList.toggle("ativo");
       botao.classList.toggle("ativo", aberto);
@@ -41,9 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      2. GESTÃO DE PERFIL E PAREAMENTO DO MATUREBOX
   ========================================================= */
-  const CODIGO_VALIDO = "964666777";
-
-  /* Elementos da Interface */
   const btnEntrarHeader = document.getElementById("btn-entrar-header");
   const perfilContainer = document.getElementById("perfil-container");
   const btnPerfilToggle = document.getElementById("btn-perfil-toggle");
@@ -53,13 +47,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarMenuImg = document.getElementById("avatar-menu-img");
   const inputFotoPerfil = document.getElementById("input-foto-perfil");
 
+  // Edição de Nome
+  const nomeExibicao = document.getElementById("nome-exibicao");
+  const nomeEdicao = document.getElementById("nome-edicao");
   const usuarioNome = document.getElementById("usuario-nome");
   const usuarioEmail = document.getElementById("usuario-email");
   const btnEditarNome = document.getElementById("btn-editar-nome");
+  const inputNovoNome = document.getElementById("input-novo-nome");
+  const btnSalvarNome = document.getElementById("btn-salvar-nome");
+  const btnCancelarNome = document.getElementById("btn-cancelar-nome");
 
+  // Pareamento
   const statusPareamentoTxt = document.getElementById("status-pareamento-txt");
+  const badgeStatusLed = document.getElementById("badge-status-led");
   const btnConectarBox = document.getElementById("btn-conectar-box");
   const btnDesconectarBox = document.getElementById("btn-desconectar-box");
+  const boxConfirmarDesconexao = document.getElementById("box-confirmar-desconexao");
+  const btnConfirmarSim = document.getElementById("btn-confirmar-sim");
+  const btnConfirmarNao = document.getElementById("btn-confirmar-nao");
   const btnLogout = document.getElementById("btn-logout");
   const mobileLinkEntrar = document.getElementById("mobile-link-entrar");
 
@@ -107,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         statusPareamentoTxt.textContent = `● MatureBox #${dispositivoId}`;
         statusPareamentoTxt.className = "status-pareamento-txt conectado";
       }
+      if (badgeStatusLed) badgeStatusLed.className = "led-status-dot online";
       if (btnConectarBox) btnConectarBox.style.display = "none";
       if (btnDesconectarBox) btnDesconectarBox.style.display = "block";
     } else {
@@ -114,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         statusPareamentoTxt.textContent = "Nenhum equipamento conectado";
         statusPareamentoTxt.className = "status-pareamento-txt desconectado";
       }
+      if (badgeStatusLed) badgeStatusLed.className = "led-status-dot offline";
       if (btnConectarBox) btnConectarBox.style.display = "block";
       if (btnDesconectarBox) btnDesconectarBox.style.display = "none";
     }
@@ -129,6 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (e) => {
       if (perfilMenu && !perfilMenu.contains(e.target) && !btnPerfilToggle.contains(e.target)) {
         perfilMenu.classList.remove("ativo");
+        fecharModoEdicaoNome();
+        fecharConfirmacaoDesconexao();
       }
     });
   }
@@ -153,65 +162,89 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Editar Nome de Exibição */
+  /* Edição de Nome In-App (Sem prompt do navegador) */
   if (btnEditarNome) {
     btnEditarNome.addEventListener("click", () => {
-      const nomeAtual = usuarioNome ? usuarioNome.textContent : "";
-      const novoNome = prompt("Digite o seu nome:", nomeAtual);
-
-      if (novoNome && novoNome.trim() !== "") {
-        if (usuarioNome) usuarioNome.textContent = novoNome.trim();
-
-        const dados = JSON.parse(localStorage.getItem("dados_usuario")) || {};
-        dados.nome = novoNome.trim();
-        localStorage.setItem("dados_usuario", JSON.stringify(dados));
+      if (nomeExibicao) nomeExibicao.style.display = "none";
+      if (nomeEdicao) nomeEdicao.style.display = "flex";
+      if (inputNovoNome) {
+        inputNovoNome.value = usuarioNome ? usuarioNome.textContent : "";
+        inputNovoNome.focus();
       }
     });
   }
 
-  /* Conectar a um Dispositivo MatureBox */
+  function salvarNovoNome() {
+    const valor = inputNovoNome ? inputNovoNome.value.trim() : "";
+    if (valor !== "") {
+      if (usuarioNome) usuarioNome.textContent = valor;
+      const dados = JSON.parse(localStorage.getItem("dados_usuario")) || {};
+      dados.nome = valor;
+      localStorage.setItem("dados_usuario", JSON.stringify(dados));
+    }
+    fecharModoEdicaoNome();
+  }
+
+  function fecharModoEdicaoNome() {
+    if (nomeEdicao) nomeEdicao.style.display = "none";
+    if (nomeExibicao) nomeExibicao.style.display = "flex";
+  }
+
+  if (btnSalvarNome) btnSalvarNome.addEventListener("click", salvarNovoNome);
+  if (btnCancelarNome) btnCancelarNome.addEventListener("click", fecharModoEdicaoNome);
+  if (inputNovoNome) {
+    inputNovoNome.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") salvarNovoNome();
+      if (e.key === "Escape") fecharModoEdicaoNome();
+    });
+  }
+
+  /* Redirecionamento Direto para o Cofre do Controle (Sem prompt do navegador) */
   if (btnConectarBox) {
     btnConectarBox.addEventListener("click", () => {
-      const codigoInput = prompt("Digite o código de 9 dígitos do seu MatureBox:");
-      if (!codigoInput) return;
+      if (perfilMenu) perfilMenu.classList.remove("ativo");
 
-      if (codigoInput.trim() === CODIGO_VALIDO) {
-        alert("MatureBox conectado com sucesso!");
-
-        localStorage.setItem("maturebox_pareado", CODIGO_VALIDO);
-        sessionStorage.setItem("cofre_desbloqueado", "true");
-
-        const dados = JSON.parse(localStorage.getItem("dados_usuario")) || {};
-        dados.dispositivo_id = CODIGO_VALIDO;
-        localStorage.setItem("dados_usuario", JSON.stringify(dados));
-
-        atualizarStatusPareamento(CODIGO_VALIDO);
-
-        const cofreOverlay = document.getElementById("cofre-overlay");
-        if (cofreOverlay) cofreOverlay.style.display = "none";
+      if (window.location.pathname.includes("controle.html")) {
+        const inputCodigo = document.getElementById("codigo-produto");
+        if (inputCodigo) inputCodigo.focus();
       } else {
-        alert("Código inválido! Verifique o número impresso no seu equipamento.");
+        window.location.href = "./controle.html";
       }
     });
   }
 
-  /* Desconectar Dispositivo */
+  /* Confirmação de Desconexão In-App (Sem confirm do navegador) */
   if (btnDesconectarBox) {
     btnDesconectarBox.addEventListener("click", () => {
-      if (confirm("Tem certeza que deseja desconectar este MatureBox da sua conta?")) {
-        localStorage.removeItem("maturebox_pareado");
-        sessionStorage.removeItem("cofre_desbloqueado");
+      btnDesconectarBox.style.display = "none";
+      if (boxConfirmarDesconexao) boxConfirmarDesconexao.style.display = "block";
+    });
+  }
 
-        const dados = JSON.parse(localStorage.getItem("dados_usuario")) || {};
-        dados.dispositivo_id = null;
-        localStorage.setItem("dados_usuario", JSON.stringify(dados));
+  function fecharConfirmacaoDesconexao() {
+    if (boxConfirmarDesconexao) boxConfirmarDesconexao.style.display = "none";
+    const temDispositivo = localStorage.getItem("maturebox_pareado");
+    if (temDispositivo && btnDesconectarBox) {
+      btnDesconectarBox.style.display = "block";
+    }
+  }
 
-        atualizarStatusPareamento(null);
-        alert("Equipamento desconectado.");
+  if (btnConfirmarNao) btnConfirmarNao.addEventListener("click", fecharConfirmacaoDesconexao);
 
-        if (window.location.pathname.includes("controle.html")) {
-          window.location.reload();
-        }
+  if (btnConfirmarSim) {
+    btnConfirmarSim.addEventListener("click", () => {
+      localStorage.removeItem("maturebox_pareado");
+      sessionStorage.removeItem("cofre_desbloqueado");
+
+      const dados = JSON.parse(localStorage.getItem("dados_usuario")) || {};
+      dados.dispositivo_id = null;
+      localStorage.setItem("dados_usuario", JSON.stringify(dados));
+
+      fecharConfirmacaoDesconexao();
+      atualizarStatusPareamento(null);
+
+      if (window.location.pathname.includes("controle.html")) {
+        window.location.reload();
       }
     });
   }

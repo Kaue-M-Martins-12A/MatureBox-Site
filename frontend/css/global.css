@@ -12,10 +12,10 @@
   --chapa-borda: #B4BAC0;
   --texto: #1F2327;
   --texto-suave: #4E565D;
-  --destaque: #8A5800;        /* âmbar escurecido: texto de destaque sobre inox */
+  --destaque: #8A5800;
   --parafuso: #98A0A6;
 
-  --painel: #23272B;          /* painéis do aparelho (cabeçalho, rodapé, visores) */
+  --painel: #23272B;
   --painel-borda: #3A4046;
   --painel-texto: #D3D7DA;
   --painel-suave: #9AA3AA;
@@ -57,7 +57,6 @@
   color-scheme: dark;
 }
 
-/* Sem JavaScript, segue a preferência do sistema */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --fundo: #16191C;
@@ -102,7 +101,6 @@ body {
   line-height: 1.6;
   color: var(--texto);
   background-color: var(--fundo);
-  /* veio de inox escovado */
   background-image: repeating-linear-gradient(90deg, transparent 0 2px, var(--fundo-veio) 2px 3px, transparent 3px 5px);
 }
 
@@ -121,7 +119,6 @@ h1, h2, h3 {
   color: var(--texto);
 }
 
-/* Títulos gravados em caixa alta, como letreiro de painel */
 h1 {
   font-size: clamp(2.5rem, 5.5vw, 3.9rem);
   font-weight: 700;
@@ -170,7 +167,6 @@ main {
   max-width: 62ch;
 }
 
-/* Cabeçalho de seção: título + texto, alinhados à esquerda */
 .secao-topo {
   display: flex;
   flex-direction: column;
@@ -184,7 +180,7 @@ main {
 }
 
 /* =========================
-   CABEÇALHO (painel do aparelho)
+   CABEÇALHO
 ========================= */
 
 .navbar {
@@ -213,7 +209,6 @@ main {
   text-decoration: none;
 }
 
-/* LED de "aparelho ligado" ao lado da marca */
 .logo a::before {
   content: "";
   width: 9px;
@@ -284,14 +279,13 @@ main {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
 }
 
-/* Tema claro mostra a lua (para ir ao escuro); escuro mostra o sol */
 .theme-toggle-btn .sol { opacity: 0; transform: rotate(-90deg) scale(0.4); }
 .theme-toggle-btn .lua { opacity: 1; transform: none; }
 :root[data-theme="dark"] .theme-toggle-btn .sol { opacity: 1; transform: none; }
 :root[data-theme="dark"] .theme-toggle-btn .lua { opacity: 0; transform: rotate(90deg) scale(0.4); }
 
 /* =========================================================
-   ESTILOS DO MENU DE PERFIL E PAREAMENTO
+   ESTILOS DO MENU DE PERFIL AMPLIADO E PAREAMENTO (IN-APP)
 ========================================================= */
 
 .perfil-container {
@@ -299,8 +293,8 @@ main {
 }
 
 .btn-perfil-avatar {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 2px solid var(--ambar);
   background: var(--painel);
@@ -314,8 +308,8 @@ main {
 }
 
 .btn-perfil-avatar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(255, 176, 32, 0.4);
+  transform: scale(1.06);
+  box-shadow: 0 0 12px rgba(255, 176, 32, 0.5);
 }
 
 .btn-perfil-avatar img {
@@ -324,43 +318,42 @@ main {
   object-fit: cover;
 }
 
-/* Dropdown Menu do Perfil */
 .perfil-menu {
   position: absolute;
-  top: 50px;
+  top: 54px;
   right: 0;
-  width: 290px;
-  background: var(--chapa);
+  width: 350px;
+  background: var(--painel);
   border: 1px solid var(--painel-borda);
-  border-radius: 8px;
-  padding: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75);
   display: none;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   z-index: 1000;
 }
 
 .perfil-menu.ativo {
   display: flex;
-  animation: fadeInDown 0.25s ease-out;
+  animation: fadeInDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-8px); }
+  from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .perfil-header-info {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .avatar-upload-wrapper {
   position: relative;
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--ambar);
@@ -378,12 +371,12 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.75);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-block: 2px;
+  padding-block: 4px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s;
@@ -396,17 +389,18 @@ main {
 .usuario-detalhes {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  overflow: hidden;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .nome-linha {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-weight: 600;
-  color: var(--texto);
-  font-size: 1rem;
+  color: var(--painel-texto);
+  font-size: 1.05rem;
 }
 
 .nome-linha span {
@@ -423,11 +417,51 @@ main {
   padding: 2px;
   display: flex;
   align-items: center;
+  transition: transform 0.2s;
 }
 
+.btn-editar-icone:hover {
+  transform: scale(1.15);
+}
+
+.nome-edicao-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.input-inline-nome {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  background: var(--lcd-fundo);
+  border: 1px solid var(--ambar);
+  border-radius: 4px;
+  color: var(--ambar);
+  font-family: var(--f-texto);
+  font-size: 0.9rem;
+}
+
+.nome-edicao-acoes {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-edicao-ok, .btn-edicao-cancel {
+  background: transparent;
+  border: 1px solid var(--painel-borda);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: 0.85rem;
+}
+
+.btn-edicao-ok { color: var(--led-ok); border-color: var(--led-ok); }
+.btn-edicao-cancel { color: var(--led-alerta); border-color: var(--led-alerta); }
+
 .usuario-email {
-  font-size: 0.8rem;
-  color: var(--texto-suave);
+  font-size: 0.82rem;
+  color: var(--painel-suave);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -439,68 +473,108 @@ main {
   margin: 0;
 }
 
-/* Seção de Pareamento */
 .pareamento-box {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  background: var(--painel);
-  padding: 12px;
-  border-radius: 6px;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 14px;
+  border-radius: 8px;
   border: 1px solid var(--painel-borda);
+}
+
+.pareamento-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .pareamento-titulo {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--texto-suave);
+  color: var(--painel-suave);
+}
+
+.led-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--led-apagado);
+}
+
+.led-status-dot.online {
+  background: var(--led-ok);
+  box-shadow: 0 0 6px var(--led-ok);
 }
 
 .status-pareamento-txt {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
-.status-pareamento-txt.conectado {
-  color: var(--led-ok);
-}
-
-.status-pareamento-txt.desconectado {
-  color: var(--ambar);
-}
+.status-pareamento-txt.conectado { color: var(--led-ok); }
+.status-pareamento-txt.desconectado { color: var(--ambar); }
 
 .btn-sm {
   width: 100%;
-  padding: 8px 10px;
-  font-size: 0.82rem;
-  margin-top: 4px;
+  padding: 10px;
+  font-size: 0.85rem;
 }
 
-.btn-perigo-outline {
-  background: transparent;
+.confirmar-desconexao-box {
+  background: rgba(224, 64, 47, 0.1);
   border: 1px solid var(--led-alerta);
-  color: var(--led-alerta);
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 6px;
+  text-align: center;
 }
 
-.btn-perigo-outline:hover {
+.confirmar-desconexao-box p {
+  font-size: 0.82rem;
+  color: var(--painel-texto);
+  margin-bottom: 8px;
+}
+
+.confirmar-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-perigo-sm {
+  flex: 1;
   background: var(--led-alerta);
   color: #fff;
+  border: 0;
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-secundario-sm {
+  flex: 1;
+  background: transparent;
+  color: var(--painel-texto);
+  border: 1px solid var(--painel-borda);
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  cursor: pointer;
 }
 
 .btn-logout {
   background: transparent;
   border: 0;
-  color: var(--texto-suave);
+  color: var(--painel-suave);
   font-size: 0.88rem;
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  padding: 6px 0;
+  padding: 4px 0;
   transition: color 0.2s;
 }
 
@@ -531,7 +605,6 @@ main {
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
-/* Tecla de painel: grafite com legenda âmbar */
 .btn-painel {
   background: var(--painel);
   border-color: var(--painel-borda);
@@ -554,7 +627,6 @@ main {
   color: var(--fundo);
 }
 
-/* Botão âmbar, usado sobre o painel escuro do cabeçalho */
 .btn-ambar {
   background: var(--ambar);
   border-color: var(--ambar);
@@ -571,18 +643,30 @@ main {
   font-size: 0.95rem;
 }
 
+.btn-perigo-outline {
+  background: transparent;
+  border: 1px solid var(--led-alerta);
+  color: var(--led-alerta);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-perigo-outline:hover {
+  background: var(--led-alerta);
+  color: #fff;
+}
+
 /* =========================
    CHAPAS, PAINÉIS, VISOR E LEDS
 ========================= */
 
-/* Chapa: superfície de inox levantada */
 .chapa {
   background: var(--chapa);
   border: 1px solid var(--chapa-borda);
   border-radius: var(--raio);
 }
 
-/* Painel grafite com parafusos nos cantos */
 .painel {
   position: relative;
   background: var(--painel);
@@ -621,7 +705,6 @@ main {
   color: var(--painel-suave);
 }
 
-/* Visor LCD âmbar com luz de fundo */
 .lcd {
   background: var(--lcd-fundo);
   border: 2px solid #0A0C0E;
@@ -661,7 +744,6 @@ main {
   box-shadow: 0 0 7px var(--led-ok);
 }
 
-/* Ícone em tecla grafite */
 .tecla {
   width: 42px;
   height: 42px;
@@ -675,7 +757,6 @@ main {
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.4);
 }
 
-/* Rótulo só para leitores de tela */
 .visualmente-oculto {
   position: absolute;
   width: 1px;
@@ -685,7 +766,6 @@ main {
   white-space: nowrap;
 }
 
-/* Imagens que trocam conforme o tema */
 .so-escuro { display: none; }
 :root[data-theme="dark"] .so-escuro { display: block; }
 :root[data-theme="dark"] .so-claro { display: none; }
@@ -790,7 +870,7 @@ main {
 }
 
 /* =========================
-   MENU MOBILE (criado pelo menu.js)
+   MENU MOBILE
 ========================= */
 
 .menu-hamburguer,
