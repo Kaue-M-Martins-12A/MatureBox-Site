@@ -1,6 +1,88 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- Perfis de maturação (valores de exemplo) ---------- */
+  /* =========================================================
+     1. VERIFICAÇÃO DE LOGIN
+  ========================================================= */
+  const usuarioLogado = localStorage.getItem("usuario_logado") || sessionStorage.getItem("usuario_logado");
+
+  if (!usuarioLogado) {
+    window.location.href = "./login.html?redirect=controle.html";
+    return;
+  }
+
+  /* =========================================================
+     2. LÓGICA DO COFRE E TRANCA
+  ========================================================= */
+  const CODIGO_CORRETO = "964666777";
+
+  const cofreOverlay = document.getElementById("cofre-overlay");
+  const cofrePainel = document.getElementById("cofre-painel");
+  const cofreVolante = document.getElementById("cofre-volante");
+  const cofreLed = document.getElementById("cofre-led");
+  const cofreStatusTexto = document.getElementById("cofre-status-texto");
+  const formCofre = document.getElementById("form-cofre");
+  const inputCodigo = document.getElementById("codigo-produto");
+  const cofreErro = document.getElementById("cofre-erro");
+
+  // Se já tiver desbloqueado nesta sessão, esconde o overlay imediatamente
+  if (sessionStorage.getItem("cofre_desbloqueado") === "true") {
+    if (cofreOverlay) cofreOverlay.style.display = "none";
+  }
+
+  if (formCofre) {
+    // Permite apenas números no campo de input
+    inputCodigo.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/\D/g, "");
+    });
+
+    formCofre.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const codigoDigitado = inputCodigo.value.trim();
+
+      if (codigoDigitado === CODIGO_CORRETO) {
+        // --- CÓDIGO CORRETO ---
+        cofreErro.textContent = "";
+        cofreStatusTexto.textContent = "DESBLOQUEANDO...";
+        
+        // Gira o volante 720 graus (duas voltas completas)
+        cofreVolante.style.transform = "rotate(720deg)";
+
+        setTimeout(() => {
+          cofreLed.classList.add("desbloqueado");
+          cofreStatusTexto.textContent = "ACESSO CONCEDIDO";
+
+          sessionStorage.setItem("cofre_desbloqueado", "true");
+
+          setTimeout(() => {
+            cofreOverlay.classList.add("aberto");
+
+            setTimeout(() => {
+              cofreOverlay.style.display = "none";
+            }, 1200);
+
+          }, 400);
+
+        }, 800);
+
+      } else {
+        // --- CÓDIGO INCORRETO ---
+        cofreVolante.style.transform = "rotate(-45deg)";
+        cofrePainel.classList.add("shake");
+        cofreErro.textContent = "CÓDIGO INCORRETO! TENTE NOVAMENTE.";
+        inputCodigo.value = "";
+        inputCodigo.focus();
+
+        setTimeout(() => {
+          cofreVolante.style.transform = "rotate(0deg)";
+          cofrePainel.classList.remove("shake");
+        }, 400);
+      }
+    });
+  }
+
+  /* =========================================================
+     3. PAINEL DE CONTROLE - PERFIS E CONFIGURAÇÕES
+  ========================================================= */
   const PERFIS = {
     carne:    { temp: 2.5, umid: 85 },
     queijo:   { temp: 12,  umid: 85 },
@@ -30,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- Estado ---------- */
   const estado = {
-    temp: 8,                 // leitura atual (simulada)
+    temp: 8,
     umid: 70,
     alvoTemp: 2.5,
     alvoUmid: 85,
@@ -44,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function log(texto) {
+    if (!registro) return;
     const hora = new Date().toLocaleTimeString("pt-BR");
     const linha = document.createElement("div");
     linha.textContent = `[${hora}] ${texto}`;
@@ -56,33 +139,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function aviso(texto, tipo) {
+    if (!mensagem) return;
     mensagem.textContent = texto;
     mensagem.className = `form-message ${tipo}`;
   }
 
   /* ---------- Desenho da tela ---------- */
   function desenharAlvos() {
-    alvoTemp.textContent = estado.alvoTemp.toFixed(1);
-    alvoUmid.textContent = String(Math.round(estado.alvoUmid));
-    alvoTempTxt.textContent = estado.alvoTemp.toFixed(1);
-    alvoUmidTxt.textContent = String(Math.round(estado.alvoUmid));
+    if (alvoTemp) alvoTemp.textContent = estado.alvoTemp.toFixed(1);
+    if (alvoUmid) alvoUmid.textContent = String(Math.round(estado.alvoUmid));
+    if (alvoTempTxt) alvoTempTxt.textContent = estado.alvoTemp.toFixed(1);
+    if (alvoUmidTxt) alvoUmidTxt.textContent = String(Math.round(estado.alvoUmid));
   }
 
   function desenharLeituras() {
-    valorTemp.textContent = estado.temp.toFixed(1);
-    valorUmid.textContent = estado.umid.toFixed(1);
-    valorHora.textContent = new Date().toLocaleTimeString("pt-BR");
+    if (valorTemp) valorTemp.textContent = estado.temp.toFixed(1);
+    if (valorUmid) valorUmid.textContent = estado.umid.toFixed(1);
+    if (valorHora) valorHora.textContent = new Date().toLocaleTimeString("pt-BR");
 
     const foraDaFaixa =
       Math.abs(estado.temp - estado.alvoTemp) > 3 ||
       Math.abs(estado.umid - estado.alvoUmid) > 10;
 
-    ledAlerta.classList.toggle("alerta", foraDaFaixa);
+    if (ledAlerta) ledAlerta.classList.toggle("alerta", foraDaFaixa);
   }
 
   function desenharReles() {
     document.querySelectorAll(".rele").forEach((item) => {
       const chave = item.querySelector(".chave");
+      if (!chave) return;
       const ligado = estado.reles[item.dataset.rele];
 
       chave.setAttribute("aria-checked", String(ligado));
@@ -97,11 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
       botao.setAttribute("aria-pressed", String(ativo));
     });
 
-    modoTxt.textContent = estado.modo === "auto" ? "Automático" : "Manual";
+    if (modoTxt) modoTxt.textContent = estado.modo === "auto" ? "Automático" : "Manual";
     desenharReles();
   }
 
-  /* ---------- Lógica automática (liga/desliga com histerese) ---------- */
+  /* ---------- Lógica automática ---------- */
   function controleAutomatico() {
     const r = estado.reles;
 
@@ -114,16 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     else { r.umidificador = false; r.exaustor = false; }
   }
 
-  /* ---------- Leitura dos sensores ----------
-     DEMONSTRAÇÃO: os valores abaixo são simulados.
-     Para usar o ESP32 de verdade, troque o conteúdo desta função por um
-     fetch ao seu backend, por exemplo:
-
-       const resp = await fetch(`${API_URL}/leitura`);
-       const dados = await resp.json();
-       estado.temp = dados.temperatura;
-       estado.umid = dados.umidade;
-  */
+  /* ---------- Leitura dos sensores (Simulada) ---------- */
   function lerSensores() {
     const r = estado.reles;
     const ruido = () => (Math.random() - 0.5) * 0.2;
@@ -135,10 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     estado.umid = limitar(estado.umid, 20, 99);
   }
 
-  /* ---------- Envio de comandos ----------
-     Troque por um POST ao backend/ESP32 para aplicar de verdade:
-       enviarParaApi("/comando", { ... });
-  */
+  /* ---------- Envio de comandos ---------- */
   function enviarComando(descricao) {
     log(descricao);
   }
@@ -153,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- Eventos ---------- */
 
-  // Botões + e - dos valores alvo
+  // Botões + e -
   document.querySelectorAll(".ajuste-btn").forEach((botao) => {
     botao.addEventListener("click", () => {
       const tipo = botao.dataset.alvo;
@@ -165,20 +238,22 @@ document.addEventListener("DOMContentLoaded", () => {
         estado.alvoUmid = limitar(estado.alvoUmid + passo, LIMITES.umid.min, LIMITES.umid.max);
       }
 
-      perfil.value = "personalizado";
+      if (perfil) perfil.value = "personalizado";
       desenharAlvos();
     });
   });
 
   // Troca de perfil
-  perfil.addEventListener("change", () => {
-    const dados = PERFIS[perfil.value];
-    if (!dados) return;
+  if (perfil) {
+    perfil.addEventListener("change", () => {
+      const dados = PERFIS[perfil.value];
+      if (!dados) return;
 
-    estado.alvoTemp = dados.temp;
-    estado.alvoUmid = dados.umid;
-    desenharAlvos();
-  });
+      estado.alvoTemp = dados.temp;
+      estado.alvoUmid = dados.umid;
+      desenharAlvos();
+    });
+  }
 
   // Automático / Manual
   document.querySelectorAll(".modo-btn").forEach((botao) => {
@@ -189,10 +264,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Chaves dos relés (só funcionam no modo manual)
+  // Chaves dos relés (só funcionam em modo manual)
   document.querySelectorAll(".rele").forEach((item) => {
     const chave = item.querySelector(".chave");
-    const nome = item.querySelector("h3").textContent;
+    if (!chave) return;
+    const nome = item.querySelector("h3") ? item.querySelector("h3").textContent : "Relé";
 
     chave.addEventListener("click", () => {
       if (estado.modo !== "manual") return;
@@ -205,19 +281,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Aplicar ajustes
-  el("btn-aplicar").addEventListener("click", () => {
-    enviarComando(`Ajustes aplicados: ${estado.alvoTemp.toFixed(1)} °C e ${Math.round(estado.alvoUmid)}%.`);
-    aviso("Ajustes aplicados com sucesso.", "sucesso");
-  });
+  const btnAplicar = el("btn-aplicar");
+  if (btnAplicar) {
+    btnAplicar.addEventListener("click", () => {
+      enviarComando(`Ajustes aplicados: ${estado.alvoTemp.toFixed(1)} °C e ${Math.round(estado.alvoUmid)}%.`);
+      aviso("Ajustes aplicados com sucesso.", "sucesso");
+    });
+  }
 
-  // Parada de emergência: desliga tudo e passa para manual
-  el("btn-parada").addEventListener("click", () => {
-    Object.keys(estado.reles).forEach((id) => { estado.reles[id] = false; });
-    estado.modo = "manual";
-    desenharModo();
-    enviarComando("PARADA DE EMERGÊNCIA: todas as saídas desligadas.");
-    aviso("Todas as saídas foram desligadas.", "erro");
-  });
+  // Parada de emergência
+  const btnParada = el("btn-parada");
+  if (btnParada) {
+    btnParada.addEventListener("click", () => {
+      Object.keys(estado.reles).forEach((id) => { estado.reles[id] = false; });
+      estado.modo = "manual";
+      desenharModo();
+      enviarComando("PARADA DE EMERGÊNCIA: todas as saídas desligadas.");
+      aviso("Todas as saídas foram desligadas.", "erro");
+    });
+  }
 
   /* ---------- Início ---------- */
   desenharAlvos();

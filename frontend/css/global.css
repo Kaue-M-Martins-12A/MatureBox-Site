@@ -290,6 +290,224 @@ main {
 :root[data-theme="dark"] .theme-toggle-btn .sol { opacity: 1; transform: none; }
 :root[data-theme="dark"] .theme-toggle-btn .lua { opacity: 0; transform: rotate(90deg) scale(0.4); }
 
+/* =========================================================
+   ESTILOS DO MENU DE PERFIL E PAREAMENTO
+========================================================= */
+
+.perfil-container {
+  position: relative;
+}
+
+.btn-perfil-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--ambar);
+  background: var(--painel);
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-perfil-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 176, 32, 0.4);
+}
+
+.btn-perfil-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dropdown Menu do Perfil */
+.perfil-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 290px;
+  background: var(--chapa);
+  border: 1px solid var(--painel-borda);
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 1000;
+}
+
+.perfil-menu.ativo {
+  display: flex;
+  animation: fadeInDown 0.25s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.perfil-header-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar-upload-wrapper {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--ambar);
+  flex-shrink: 0;
+}
+
+.avatar-upload-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-trocar-foto {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 2px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.avatar-upload-wrapper:hover .btn-trocar-foto {
+  opacity: 1;
+}
+
+.usuario-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.nome-linha {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--texto);
+  font-size: 1rem;
+}
+
+.nome-linha span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-editar-icone {
+  background: transparent;
+  border: 0;
+  color: var(--ambar);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.usuario-email {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.perfil-divisor {
+  border: 0;
+  border-top: 1px solid var(--painel-borda);
+  margin: 0;
+}
+
+/* Seção de Pareamento */
+.pareamento-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--painel);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--painel-borda);
+}
+
+.pareamento-titulo {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-suave);
+}
+
+.status-pareamento-txt {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.status-pareamento-txt.conectado {
+  color: var(--led-ok);
+}
+
+.status-pareamento-txt.desconectado {
+  color: var(--ambar);
+}
+
+.btn-sm {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+.btn-perigo-outline {
+  background: transparent;
+  border: 1px solid var(--led-alerta);
+  color: var(--led-alerta);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-perigo-outline:hover {
+  background: var(--led-alerta);
+  color: #fff;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 0;
+  color: var(--texto-suave);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+
+.btn-logout:hover {
+  color: var(--led-alerta);
+}
+
 /* =========================
    BOTÕES
 ========================= */

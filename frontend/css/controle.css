@@ -285,6 +285,233 @@
   white-space: pre-wrap;
 }
 
+/* =========================================================
+   OVERLAY E TRANCA DE COFRE (CSS ANIMADO)
+========================================================= */
+
+.cofre-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0c0e;
+}
+
+/* Portas bipartidas do cofre */
+.cofre-porta {
+  position: absolute;
+  top: 0;
+  width: 50.5%;
+  height: 100%;
+  background: radial-gradient(circle at center, #22262a 0%, #111315 100%);
+  border-color: #383e45;
+  border-style: solid;
+  border-width: 0;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+}
+
+.cofre-porta-esquerda {
+  left: 0;
+  border-right-width: 4px;
+}
+
+.cofre-porta-direita {
+  right: 0;
+  border-left-width: 4px;
+}
+
+/* Animação das portas abrindo */
+.cofre-overlay.aberto .cofre-porta-esquerda {
+  transform: translateX(-100%);
+}
+
+.cofre-overlay.aberto .cofre-porta-direita {
+  transform: translateX(100%);
+}
+
+/* Painel central metálico */
+.cofre-painel {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 440px;
+  padding: 32px 28px;
+  background: linear-gradient(145deg, #1c2024, #131618);
+  border: 2px solid var(--ambar, #ffb000);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 176, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.cofre-overlay.aberto .cofre-painel {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+}
+
+/* Topo do painel & LED */
+.cofre-topo-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cofre-led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff3b30;
+  box-shadow: 0 0 10px #ff3b30;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.cofre-led.desbloqueado {
+  background: #34c759;
+  box-shadow: 0 0 12px #34c759;
+}
+
+.cofre-status-texto {
+  font-family: var(--f-titulo, sans-serif);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: var(--texto-suave, #a0a0a0);
+}
+
+/* Volante de cofre em CSS */
+.cofre-volante-container {
+  padding: 10px;
+}
+
+.cofre-volante {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3a4047 0%, #181b1d 70%);
+  border: 6px solid #4a525d;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hastes do volante */
+.cofre-volante .haste {
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, #5a6370, #2a2e35, #5a6370);
+  border-radius: 5px;
+}
+
+.cofre-volante .h1 { transform: rotate(0deg); }
+.cofre-volante .h2 { transform: rotate(45deg); }
+.cofre-volante .h3 { transform: rotate(90deg); }
+.cofre-volante .h4 { transform: rotate(135deg); }
+
+/* Miolo do volante */
+.miolo-volante {
+  position: relative;
+  z-index: 2;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--ambar, #ffb000) 0%, #805800 100%);
+  border: 3px solid #1a1d20;
+  box-shadow: 0 0 10px rgba(255, 176, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ponto-guia {
+  width: 8px;
+  height: 8px;
+  background: #111;
+  border-radius: 50%;
+  transform: translateY(-16px);
+}
+
+/* Form e entradas */
+.cofre-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cofre-label {
+  font-family: var(--f-titulo, sans-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--ambar, #ffb000);
+  text-align: center;
+}
+
+.cofre-input-wrapper {
+  width: 100%;
+}
+
+.cofre-input {
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  font-family: var(--f-lcd, monospace);
+  font-size: 1.8rem;
+  letter-spacing: 0.25em;
+  background: #0d0f11;
+  border: 1px solid #383e45;
+  border-radius: 6px;
+  color: var(--ambar, #ffb000);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.cofre-input:focus {
+  border-color: var(--ambar, #ffb000);
+  box-shadow: 0 0 12px rgba(255, 176, 0, 0.3);
+}
+
+.btn-cofre {
+  width: 100%;
+  padding: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+/* Mensagem de Erro e Tremor */
+.cofre-erro-msg {
+  min-height: 20px;
+  font-size: 0.85rem;
+  color: #ff3b30;
+  text-align: center;
+  font-family: var(--f-titulo, sans-serif);
+}
+
+.shake {
+  animation: cofreShake 0.4s ease-in-out;
+}
+
+@keyframes cofreShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
 /* =========================
    RESPONSIVO
 ========================= */
