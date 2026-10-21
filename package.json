@@ -20,8 +20,12 @@
   },
   "homepage": "https://github.com/Kaue-M-Martins-12A/MatureBox-Site#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "mysql2": "^3.24.6"
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6",
+    "nodemailer": "^10.1.7",
+    "resend": "^6.34.1"
   }
 }
