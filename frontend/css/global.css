@@ -967,3 +967,33 @@ main {
     animation: none !important;
   }
 }
+
+
+/* Eleva a barra de navegação para ficar visível por cima da camada do cofre */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+
+/* Mantém o cofre cobrindo a página abaixo do cabeçalho */
+.cofre-overlay {
+  z-index: 9999;
+}
+
+/* Estilização do link de voltar para a Home dentro da caixa do cofre */
+.cofre-link-voltar {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  color: var(--painel-suave);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-family: var(--f-texto);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.cofre-link-voltar:hover {
+  color: var(--ambar);
+  transform: translateX(-3px);
+}
