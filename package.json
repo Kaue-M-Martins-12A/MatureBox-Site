@@ -1,6 +1,6 @@
 {
   "name": "maturebox-site",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Site do projeto MatureBox",
   "main": "server.js",
   "scripts": {
