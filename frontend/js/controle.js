@@ -24,13 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputCodigo = document.getElementById("codigo-produto");
   const cofreErro = document.getElementById("cofre-erro");
 
-  // Se já tiver desbloqueado nesta sessão, esconde o overlay imediatamente
   if (sessionStorage.getItem("cofre_desbloqueado") === "true") {
     if (cofreOverlay) cofreOverlay.style.display = "none";
   }
 
   if (formCofre) {
-    // Permite apenas números no campo de input
     inputCodigo.addEventListener("input", (e) => {
       e.target.value = e.target.value.replace(/\D/g, "");
     });
@@ -40,11 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const codigoDigitado = inputCodigo.value.trim();
 
       if (codigoDigitado === CODIGO_CORRETO) {
-        // --- CÓDIGO CORRETO ---
         cofreErro.textContent = "";
         cofreStatusTexto.textContent = "DESBLOQUEANDO...";
         
-        // Salva o dispositivo pareado no localStorage
         localStorage.setItem("maturebox_codigo", codigoDigitado);
         localStorage.setItem("maturebox_pareado", codigoDigitado);
 
@@ -52,14 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
         dadosUsuario.dispositivo_id = codigoDigitado;
         localStorage.setItem("dados_usuario", JSON.stringify(dadosUsuario));
 
-        // Atualiza a interface do perfil no header imediatamente
         if (typeof window.carregarDadosPerfil === "function") {
           window.carregarDadosPerfil();
         } else if (typeof window.atualizarStatusPareamento === "function") {
           window.atualizarStatusPareamento(codigoDigitado);
         }
 
-        // Gira o volante 720 graus (duas voltas completas)
         cofreVolante.style.transform = "rotate(720deg)";
 
         setTimeout(() => {
@@ -80,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 800);
 
       } else {
-        // --- CÓDIGO INCORRETO ---
         cofreVolante.style.transform = "rotate(-45deg)";
         cofrePainel.classList.add("shake");
         cofreErro.textContent = "CÓDIGO INCORRETO! TENTE NOVAMENTE.";
@@ -96,7 +89,89 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================================================
-     3. PAINEL DE CONTROLE - PERFIS E CONFIGURAÇÕES
+     3. CRONÓMETRO DO CICLO DE MATURAÇÃO (INICIAR / PARAR)
+  ========================================================= */
+  const btnMaturacao = document.getElementById("btn-maturacao");
+  const timerMaturacao = document.getElementById("timer-maturacao");
+  const ledMaturacao = document.getElementById("led-maturacao");
+
+  function formatarTempo(ms) {
+    const totalSegundos = Math.floor(ms / 1000);
+    const dias = Math.floor(totalSegundos / 86400);
+    const horas = Math.floor((totalSegundos % 86400) / 3600);
+    const minutos = Math.floor((totalSegundos % 3600) / 60);
+    const segundos = totalSegundos % 60;
+
+    const hh = String(horas).padStart(2, "0");
+    const mm = String(minutos).padStart(2, "0");
+    const ss = String(segundos).padStart(2, "0");
+
+    if (dias > 0) {
+      return `${dias}d ${hh}:${mm}:${ss}`;
+    }
+    return `${hh}:${mm}:${ss}`;
+  }
+
+  function atualizarTimerMaturacao() {
+    const inicioTimestamp = localStorage.getItem("maturacao_inicio_timestamp");
+
+    if (inicioTimestamp) {
+      const msDecorridos = Date.now() - parseInt(inicioTimestamp, 10);
+      if (timerMaturacao) timerMaturacao.textContent = formatarTempo(msDecorridos);
+
+      if (btnMaturacao) {
+        btnMaturacao.textContent = "PARAR";
+        btnMaturacao.className = "btn-maturacao btn-maturacao-stop";
+      }
+
+      if (ledMaturacao) {
+        ledMaturacao.textContent = "Maturando";
+        ledMaturacao.classList.add("ativo");
+      }
+    } else {
+      if (timerMaturacao) timerMaturacao.textContent = "00:00:00";
+
+      if (btnMaturacao) {
+        btnMaturacao.textContent = "INICIAR";
+        btnMaturacao.className = "btn-maturacao btn-maturacao-start";
+      }
+
+      if (ledMaturacao) {
+        ledMaturacao.textContent = "Inativo";
+        ledMaturacao.classList.remove("ativo");
+      }
+    }
+  }
+
+  if (btnMaturacao) {
+    btnMaturacao.addEventListener("click", () => {
+      const estaMaturando = localStorage.getItem("maturacao_inicio_timestamp");
+
+      if (!estaMaturando) {
+        // INICIAR MATURAÇÃO
+        const agora = Date.now();
+        localStorage.setItem("maturacao_inicio_timestamp", agora.toString());
+        log("CICLO DE MATURAÇÃO INICIADO.");
+        aviso("Ciclo de maturação iniciado com sucesso!", "sucesso");
+      } else {
+        // PARAR MATURAÇÃO
+        const inicio = parseInt(estaMaturando, 10);
+        const duracaoTotal = formatarTempo(Date.now() - inicio);
+        localStorage.removeItem("maturacao_inicio_timestamp");
+        log(`CICLO DE MATURAÇÃO PARADO. Duração total: ${duracaoTotal}`);
+        aviso(`Maturação finalizada. Duração: ${duracaoTotal}`, "sucesso");
+      }
+
+      atualizarTimerMaturacao();
+    });
+  }
+
+  // Atualiza o timer a cada 1 segundo
+  setInterval(atualizarTimerMaturacao, 1000);
+  atualizarTimerMaturacao();
+
+  /* =========================================================
+     4. PAINEL DE CONTROLE - PERFIS E CONFIGURAÇÕES
   ========================================================= */
   const PERFIS = {
     carne:    { temp: 2.5, umid: 85 },
@@ -109,7 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
     umid: { min: 40, max: 95 }
   };
 
-  /* ---------- Elementos ---------- */
   const el = (id) => document.getElementById(id);
 
   const valorTemp = el("valor-temp");
@@ -125,7 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const registro = el("registro");
   const ledAlerta = el("led-alerta");
 
-  /* ---------- Estado ---------- */
   const estado = {
     temp: 8,
     umid: 70,
@@ -135,7 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
     reles: { compressor: false, aquecedor: false, umidificador: false, exaustor: false }
   };
 
-  /* ---------- Utilidades ---------- */
   function limitar(valor, min, max) {
     return Math.min(max, Math.max(min, valor));
   }
@@ -159,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
     mensagem.className = `form-message ${tipo}`;
   }
 
-  /* ---------- Desenho da tela ---------- */
   function desenharAlvos() {
     if (alvoTemp) alvoTemp.textContent = estado.alvoTemp.toFixed(1);
     if (alvoUmid) alvoUmid.textContent = String(Math.round(estado.alvoUmid));
@@ -201,7 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
     desenharReles();
   }
 
-  /* ---------- Lógica automática ---------- */
   function controleAutomatico() {
     const r = estado.reles;
 
@@ -214,7 +284,6 @@ document.addEventListener("DOMContentLoaded", () => {
     else { r.umidificador = false; r.exaustor = false; }
   }
 
-  /* ---------- Leitura dos sensores (Simulada) ---------- */
   function lerSensores() {
     const r = estado.reles;
     const ruido = () => (Math.random() - 0.5) * 0.2;
@@ -226,12 +295,10 @@ document.addEventListener("DOMContentLoaded", () => {
     estado.umid = limitar(estado.umid, 20, 99);
   }
 
-  /* ---------- Envio de comandos ---------- */
   function enviarComando(descricao) {
     log(descricao);
   }
 
-  /* ---------- Ciclo principal ---------- */
   function ciclo() {
     lerSensores();
     if (estado.modo === "auto") controleAutomatico();
@@ -239,9 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
     desenharReles();
   }
 
-  /* ---------- Eventos ---------- */
-
-  // Botões + e -
+  // Eventos de Ajuste
   document.querySelectorAll(".ajuste-btn").forEach((botao) => {
     botao.addEventListener("click", () => {
       const tipo = botao.dataset.alvo;
@@ -258,7 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Troca de perfil
   if (perfil) {
     perfil.addEventListener("change", () => {
       const dados = PERFIS[perfil.value];
@@ -270,7 +334,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Automático / Manual
   document.querySelectorAll(".modo-btn").forEach((botao) => {
     botao.addEventListener("click", () => {
       estado.modo = botao.dataset.modo;
@@ -279,7 +342,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Chaves dos relés (só funcionam em modo manual)
   document.querySelectorAll(".rele").forEach((item) => {
     const chave = item.querySelector(".chave");
     if (!chave) return;
@@ -295,7 +357,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Aplicar ajustes
   const btnAplicar = el("btn-aplicar");
   if (btnAplicar) {
     btnAplicar.addEventListener("click", () => {
@@ -304,7 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Parada de emergência
   const btnParada = el("btn-parada");
   if (btnParada) {
     btnParada.addEventListener("click", () => {

@@ -38,3 +38,6 @@ São dois projetos na Vercel, ambos importando este mesmo repositório.
 **Frontend**
 1. Root Directory: `frontend`. Framework Preset: Other, sem comando de build.
 2. Depois do deploy do backend, coloque a URL dele em `API_URL_PRODUCAO` no arquivo `frontend/js/api.js`.
+
+
+porque que essa desgrama não ta indo
