@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "maturebox",
   "version": "1.0.0",
   "main": "server.js",
@@ -18,3 +19,35 @@
     "nodemon": "^3.1.0"
   } 
 }
+=======
+  "name": "maturebox-site",
+  "version": "1.0.1",
+  "description": "Site do projeto MatureBox",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaue-M-Martins-12A/MatureBox-Site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Kaue-M-Martins-12A/MatureBox-Site/issues"
+  },
+  "homepage": "https://github.com/Kaue-M-Martins-12A/MatureBox-Site#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.6",
+    "nodemailer": "^10.1.7",
+    "resend": "^6.34.1"
+  }
+}
+>>>>>>> bc895b3a9ff478c2aebbc1fda960155ec7acd1cc

@@ -1,0 +1,227 @@
+/* =========================
+   CHAT DO ASSISTENTE
+========================= */
+
+.chat-abrir {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 150;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px 6px 6px;
+  border: 1.5px solid var(--painel-borda);
+  border-radius: 999px;
+  background: var(--painel);
+  color: var(--ambar);
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.chat-abrir:hover {
+  background: var(--painel-borda);
+  border-color: var(--ambar);
+}
+
+/* Imagem do assistente dentro do botão */
+.chat-abrir img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+}
+
+.chat-abrir.oculto {
+  display: none;
+}
+
+.chat-janela {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 150;
+  width: min(390px, calc(100vw - 32px));
+  height: min(560px, calc(100vh - 120px));
+  display: flex;
+  flex-direction: column;
+  background: var(--painel);
+  color: var(--painel-texto);
+  border: 1px solid var(--painel-borda);
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.chat-janela[hidden] {
+  display: none;
+}
+
+.chat-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--painel-borda);
+}
+
+.chat-titulo {
+  font-family: var(--f-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.chat-titulo .led::before {
+  margin-right: 10px;
+}
+
+.chat-fechar {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--painel-borda);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ambar);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.chat-fechar:hover {
+  border-color: var(--ambar);
+}
+
+.chat-mensagens {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+}
+
+.chat-msg {
+  max-width: 86%;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.chat-msg.usuario {
+  align-self: flex-end;
+  background: var(--ambar);
+  color: #23272B;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-msg.assistente {
+  align-self: flex-start;
+  background: var(--painel-borda);
+  color: var(--painel-texto);
+  border-bottom-left-radius: 2px;
+}
+
+.chat-msg.digitando {
+  font-family: var(--f-lcd);
+  color: var(--painel-suave);
+}
+
+.chat-msg.erro {
+  border-left: 3px solid var(--led-alerta);
+}
+
+.chat-sugestoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px 12px;
+}
+
+.chat-sugestoes[hidden] {
+  display: none;
+}
+
+.chat-chip {
+  padding: 6px 12px;
+  border: 1px solid var(--painel-borda);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--painel-texto);
+  font-family: var(--f-texto);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.chat-chip:hover {
+  border-color: var(--ambar);
+  color: var(--ambar);
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--painel-borda);
+}
+
+.chat-entrada {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--painel-borda);
+  border-radius: 4px;
+  background: var(--lcd-fundo);
+  color: var(--ambar);
+  font-family: var(--f-lcd);
+  font-size: 0.95rem;
+}
+
+.chat-entrada::placeholder {
+  color: rgba(255, 176, 32, 0.5);
+}
+
+.chat-enviar {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+}
+
+.chat-enviar:disabled,
+.chat-entrada:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chat-aviso {
+  padding: 0 16px 12px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--painel-suave);
+}
+
+@media (max-width: 560px) {
+  .chat-abrir {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .chat-janela {
+    right: 16px;
+    bottom: 16px;
+    height: min(560px, calc(100vh - 96px));
+  }
+}

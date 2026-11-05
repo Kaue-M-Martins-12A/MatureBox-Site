@@ -1,0 +1,222 @@
+/* =========================
+   HERO
+========================= */
+
+.hero-projeto {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-imagem {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  cursor: zoom-in;
+  font: inherit;
+  color: inherit;
+}
+
+.hero-imagem img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.ampliar {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--painel);
+  color: var(--ambar);
+  font-family: var(--f-titulo);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   LISTA DE COMPONENTES
+========================= */
+
+.bom-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.componentes {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--chapa);
+  border: 1px solid var(--chapa-borda);
+  border-radius: var(--raio);
+}
+
+.componente {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: start;
+  padding: 22px 24px;
+}
+
+.componente + .componente {
+  border-top: 1px solid var(--chapa-borda);
+}
+
+.componente-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.componente-texto p {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+/* Preço em mini-visor */
+.preco {
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: var(--lcd-fundo);
+  color: var(--ambar);
+  font-family: var(--f-lcd);
+  font-size: 1rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Resumo fixo ao rolar a lista */
+.resumo {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resumo-linhas {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.resumo-linhas div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--painel-borda);
+}
+
+.resumo-linhas dt {
+  color: var(--painel-suave);
+}
+
+.resumo-linhas dd {
+  margin: 0;
+  font-family: var(--f-lcd);
+  color: var(--painel-texto);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.resumo-total {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lcd.total {
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  text-align: right;
+}
+
+/* =========================
+   IMAGEM AMPLIADA
+========================= */
+
+.imagem-ampliada {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(14, 16, 18, 0.92);
+}
+
+.imagem-ampliada.ativo {
+  display: flex;
+}
+
+.imagem-ampliada img {
+  max-width: min(100%, 1000px);
+  max-height: 90vh;
+  border-radius: 6px;
+}
+
+.fechar-imagem {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #3A4046;
+  border-radius: 50%;
+  background: #23272B;
+  color: #FFB020;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+  .hero-projeto,
+  .bom-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .resumo {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .componente {
+    grid-template-columns: auto minmax(0, 1fr);
+    padding: 18px 16px;
+  }
+
+  .preco {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
